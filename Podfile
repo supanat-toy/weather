@@ -6,7 +6,9 @@ target 'weather' do
   use_frameworks!
 
   # Pods for weather
-
+  pod 'Moya', '~> 13.0'
+  pod 'Moya/RxSwift', '~> 13.0'
+  
   target 'weatherTests' do
     inherit! :search_paths
     # Pods for testing
