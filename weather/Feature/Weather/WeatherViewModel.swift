@@ -8,9 +8,12 @@
 import Foundation
 
 enum WeatherViewModel {
+    
     struct Weather {
-        var fundName: String
-        var fundTHName: String
-        var price: String
+        var timezone: Int?
+        var name: String?
+        var cod: Int?
+        var humidity: Double?
+        var temp: Double?
     }
 }

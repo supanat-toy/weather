@@ -14,7 +14,25 @@ enum WeatherModel {
         }
         
         struct Response: Decodable {
-            var fundFactSheetUrl: String?
+            var timezone: Int?
+            var name: String?
+            var cod: Int?
+            var weather: [Weather]?
+            var main: Main?
+            
+            struct Weather: Decodable {
+                var icon: String?
+                var description: String?
+            }
+            
+            struct Main: Decodable {
+                var temp: Double?
+                var feels_like: Double?
+                var temp_min: Double?
+                var temp_max: Double?
+                var pressure: Double?
+                var humidity: Double?
+            }
         }
     }
     

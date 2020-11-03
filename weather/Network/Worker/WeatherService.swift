@@ -17,7 +17,7 @@ enum WeatherService {
 extension WeatherService: TargetType {
 
     public var baseURL: URL {
-        return URL(string: "")!
+        return URL(string: "http://api.openweathermap.org/data/2.5")!
     }
     
     public var path: String {
@@ -40,9 +40,11 @@ extension WeatherService: TargetType {
     public var parameters: [String: Any] {
         switch self {
         case .getWeather(let request):
-            return ["q": request.cityName]
+            return ["q": request.cityName,
+                    "appid": "2b0f295dfc1c56bf9d42c2b0853d5167"]
         case .getForecast5Days(let request):
-            return ["q": request.cityName]
+            return ["q": request.cityName,
+                    "appid": "2b0f295dfc1c56bf9d42c2b0853d5167"]
         }
     }
     
@@ -51,9 +53,7 @@ extension WeatherService: TargetType {
     }
         
     public var task: Task {
-        let encoding:ParameterEncoding =
-            self.method == .post ? Alamofire.JSONEncoding.default : Alamofire.URLEncoding.default
-        return Task.requestParameters(parameters: parameters, encoding: encoding)
+        return Task.requestParameters(parameters: parameters, encoding: Alamofire.URLEncoding.default)
     }
     
     public var headers: [String : String]? {

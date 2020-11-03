@@ -18,9 +18,17 @@ class WeatherPresenter: WeatherPresentationLogic {
     
     func getWeatherOnComplete(response: WeatherModel.GetWeather.Response) {
         
+        let weatherViewModel = WeatherViewModel.Weather(
+            timezone: response.timezone,
+            name: response.name,
+            cod: response.cod,
+            humidity: response.main?.humidity,
+            temp: response.main?.temp
+        )
+        viewController?.getCurrentWeatherOnComplete(viewModel: weatherViewModel)
     }
     
     func getWeatherOnError(error: Error) {
-        
+        viewController?.getCurrentWeatherOnError(errorMessage: error.localizedDescription)
     }
 }

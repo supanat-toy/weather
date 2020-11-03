@@ -9,13 +9,20 @@ import Foundation
 import UIKit
 
 protocol WeatherDisplayLogic {
-    
+    func getCurrentWeatherOnComplete(viewModel: WeatherViewModel.Weather)
+    func getCurrentWeatherOnError(errorMessage: String)
 }
 
-class WeatherViewController: ViewController, WeatherDisplayLogic {
-    // MARK: Data Store
+class WeatherViewController: BaseViewController, WeatherDisplayLogic {
+
     var interactor: WeatherInteractor?
     var router: WeatherRouter?
+    
+    // MARK: UI
+    @IBOutlet var temperatureLabel: UILabel!
+    @IBOutlet var humidityLabel: UILabel!
+    @IBOutlet var cityTextField: UITextField!
+    @IBOutlet var weatherImageView: UIImageView!
     
     // MARK: Object lifecycle
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -32,7 +39,21 @@ class WeatherViewController: ViewController, WeatherDisplayLogic {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        interactor?.getCurrentWeather()
+    }
+    
+    @IBAction func searchOnclick(_ sender: UIButton) {
+        if let cityName = cityTextField.text {
+            interactor?.getCurrentWeather(cityName: cityName)
+        }
+    }
+    
+    func getCurrentWeatherOnComplete(viewModel: WeatherViewModel.Weather) {
+        temperatureLabel.text = "\(viewModel.temp ?? 0.0)"
+        humidityLabel.text = "\(viewModel.humidity ?? 0.0)"
+    }
+    
+    func getCurrentWeatherOnError(errorMessage: String) {
+        alertError(code: nil, message: errorMessage)
     }
 }
 
