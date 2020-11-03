@@ -15,14 +15,14 @@ protocol WeatherRoutingLogic {
 class WeatherRouter {
     var viewController: WeatherViewController?
     
-    func navigateToOrderStatusFundDetail() {
-        self.viewController?.performSegue(withIdentifier: "gotoOrderStatusFundDetailSegue", sender: self.viewController)
+    func navigateToForecastSegue() {
+        self.viewController?.performSegue(withIdentifier: "gotoForecastSegue", sender: self.viewController)
     }
     
     func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "gotoOrderStatusFundDetailSegue" {
-            if let  destinationVC = segue.destination as? WeatherViewController {
-                
+        if segue.identifier == "gotoForecastSegue" {
+            if let destinationVC = segue.destination as? ForecastViewController {
+                destinationVC.cityName = viewController?.cityName
             }
         }
     }

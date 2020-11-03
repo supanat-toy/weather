@@ -45,7 +45,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <action selector="searchOnclick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HMq-cf-GgY"/>
+                                    <action selector="searchOnClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rGM-RN-ipy"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -54,14 +54,18 @@
                     </view>
                     <navigationItem key="navigationItem" title="Weather" id="mWY-mL-trE">
                         <barButtonItem key="backBarButtonItem" title=" " id="2tK-PW-yvt"/>
-                        <barButtonItem key="rightBarButtonItem" image="arrow.right" catalog="system" id="vLT-aO-23l"/>
+                        <barButtonItem key="rightBarButtonItem" image="arrow.right" catalog="system" id="vLT-aO-23l">
+                            <connections>
+                                <action selector="forecastOnClick:" destination="BYZ-38-t0r" id="00g-yZ-jLy"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="cityTextField" destination="wlb-hG-ppQ" id="Hjx-Vh-uXn"/>
                         <outlet property="humidityLabel" destination="9TQ-Uy-kUn" id="B9u-nf-K1h"/>
                         <outlet property="temperatureLabel" destination="Sm7-mD-DRq" id="dZW-CR-e63"/>
                         <outlet property="weatherImageView" destination="Mc2-Ui-Tch" id="aDX-7m-AJM"/>
-                        <segue destination="9PJ-sb-xfq" kind="show" id="rdI-WT-l0b"/>
+                        <segue destination="9PJ-sb-xfq" kind="show" identifier="gotoForecastSegue" id="rdI-WT-l0b"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -71,16 +75,45 @@
         <!-- -->
         <scene sceneID="9lP-4x-bbh">
             <objects>
-                <viewController id="9PJ-sb-xfq" sceneMemberID="viewController">
+                <viewController id="9PJ-sb-xfq" customClass="ForecastViewController" customModule="weather" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gYu-c7-YWX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rUh-fn-CqW">
+                                <rect key="frame" x="0.0" y="88" width="414" height="100"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="xTV-8A-dDc"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YUO-PF-PgQ">
+                                <rect key="frame" x="0.0" y="188" width="414" height="674"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="9PJ-sb-xfq" id="vsk-Qz-X9i"/>
+                                    <outlet property="delegate" destination="9PJ-sb-xfq" id="hqN-Xi-a67"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="RsK-Su-fx3"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="rUh-fn-CqW" firstAttribute="leading" secondItem="RsK-Su-fx3" secondAttribute="leading" id="28t-Mg-3QF"/>
+                            <constraint firstItem="RsK-Su-fx3" firstAttribute="trailing" secondItem="YUO-PF-PgQ" secondAttribute="trailing" id="596-jc-87Q"/>
+                            <constraint firstItem="RsK-Su-fx3" firstAttribute="bottom" secondItem="YUO-PF-PgQ" secondAttribute="bottom" id="5Co-fH-Cfk"/>
+                            <constraint firstItem="YUO-PF-PgQ" firstAttribute="leading" secondItem="RsK-Su-fx3" secondAttribute="leading" id="5QU-tg-Q78"/>
+                            <constraint firstItem="YUO-PF-PgQ" firstAttribute="top" secondItem="rUh-fn-CqW" secondAttribute="bottom" id="7Iv-tO-nuZ"/>
+                            <constraint firstItem="rUh-fn-CqW" firstAttribute="top" secondItem="RsK-Su-fx3" secondAttribute="top" id="7MG-bQ-cb2"/>
+                            <constraint firstItem="RsK-Su-fx3" firstAttribute="trailing" secondItem="rUh-fn-CqW" secondAttribute="trailing" id="F43-lV-Ox4"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title=" " id="BEn-gi-qQh">
                         <barButtonItem key="backBarButtonItem" title=" " id="tpY-fL-N8r"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="YUO-PF-PgQ" id="Qyg-7T-MOh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tz7-Q1-GRQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

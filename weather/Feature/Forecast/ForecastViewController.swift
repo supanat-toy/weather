@@ -8,24 +8,22 @@
 import Foundation
 import UIKit
 
-protocol WeatherDisplayLogic {
-    func getCurrentWeatherOnComplete(viewModel: WeatherViewModel.Weather)
-    func getCurrentWeatherOnError(errorMessage: String)
+protocol ForecastDisplayLogic {
+    func getForecast5DaysOnComplete(viewModel: ForecastViewModel.Forecast5Days)
+    func getForecast5DaysOnError(errorMessage: String)
 }
 
-class WeatherViewController: BaseViewController, WeatherDisplayLogic {
+class ForecastViewController: BaseViewController, ForecastDisplayLogic {
 
-    var interactor: WeatherInteractor?
-    var router: WeatherRouter?
+    var interactor: ForecastInteractor?
+    var router: ForecastRouter?
     
     // MARK: UI
-    @IBOutlet var temperatureLabel: UILabel!
-    @IBOutlet var humidityLabel: UILabel!
-    @IBOutlet var cityTextField: UITextField!
-    @IBOutlet var weatherImageView: UIImageView!
+    @IBOutlet var tableView: UITableView!
     
     // MARK: Data
     var cityName: String?
+    var forecastViewModelList = [ForecastViewModel.Forecast5Days.Forecast]()
     
     // MARK: Object lifecycle
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -42,35 +40,30 @@ class WeatherViewController: BaseViewController, WeatherDisplayLogic {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupData()
     }
     
-    @IBAction func searchOnClick(_ sender: UIButton) {
-        cityName = cityTextField.text
+    func setupData() {
         if let cityName = cityName {
-            interactor?.getCurrentWeather(cityName: cityName)
+            interactor?.getForecast5Days(cityName: cityName)
         }
     }
-    
-    @IBAction func forecastOnClick(_ sender: UIBarButtonItem) {
-        router?.navigateToForecastSegue()
+
+    func getForecast5DaysOnComplete(viewModel: ForecastViewModel.Forecast5Days) {
+        forecastViewModelList = viewModel.forecastList ?? []
     }
     
-    func getCurrentWeatherOnComplete(viewModel: WeatherViewModel.Weather) {
-        temperatureLabel.text = "\(viewModel.temp ?? 0.0)"
-        humidityLabel.text = "\(viewModel.humidity ?? 0.0)"
-    }
-    
-    func getCurrentWeatherOnError(errorMessage: String) {
+    func getForecast5DaysOnError(errorMessage: String) {
         alertError(code: nil, message: errorMessage)
     }
 }
 
-extension WeatherViewController {
+extension ForecastViewController {
     func setup() {
         let viewController = self
-        let interactor = WeatherInteractor()
-        let presenter = WeatherPresenter()
-        let router = WeatherRouter()
+        let interactor = ForecastInteractor()
+        let presenter = ForecastPresenter()
+        let router = ForecastRouter()
         viewController.interactor = interactor
         viewController.router = router
         interactor.presenter = presenter

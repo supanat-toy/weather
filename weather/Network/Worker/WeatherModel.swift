@@ -27,7 +27,6 @@ enum WeatherModel {
             
             struct Main: Decodable {
                 var temp: Double?
-                var feels_like: Double?
                 var temp_min: Double?
                 var temp_max: Double?
                 var pressure: Double?
@@ -42,7 +41,20 @@ enum WeatherModel {
         }
         
         struct Response: Decodable {
-            var fundFactSheetUrl: String?
+            var list: [Forecast]?
+            
+            struct Forecast: Decodable {
+                var dt: Int64?
+                var main: Main?
+                
+                struct Main: Decodable {
+                    var temp: Double?
+                    var temp_min: Double?
+                    var temp_max: Double?
+                    var pressure: Double?
+                    var humidity: Double?
+                }
+            }
         }
     }
 }
