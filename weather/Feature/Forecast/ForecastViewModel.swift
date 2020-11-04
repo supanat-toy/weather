@@ -10,12 +10,17 @@ import Foundation
 enum ForecastViewModel {
     
     struct Forecast5Days {
-        var forecastList: [Forecast]?
+        var forecastByDates: [Forecast]?
         
         struct Forecast {
             var date: String?
-            var humidity: Double?
-            var temp: Double?
+            var values: [Value]?
+            
+            struct Value {
+                var time: String?
+                var humidity: String?
+                var temp: String?
+            }
         }
     }
 }

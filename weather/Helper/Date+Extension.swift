@@ -9,8 +9,8 @@ import Foundation
 
 extension Date {
     
-    init(milliseconds:Int64) {
-        self = Date(timeIntervalSince1970: TimeInterval(milliseconds) / 1000)
+    init(milliseconds: Int64) {
+        self = Date(timeIntervalSince1970: Double(milliseconds))
     }
     
     func formattedString(format: String) -> String {

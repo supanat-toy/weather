@@ -10,9 +10,13 @@ import UIKit
 class ForecastTableViewCell: UITableViewCell {
 
     // MARK: UI
-    @IBOutlet weak var shadowView: UIView!
-    @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var badgeView: UIView!
+//    @IBOutlet weak var shadowView: UIView!
+//    @IBOutlet weak var containerView: UIView!
+//    @IBOutlet weak var badgeView: UIView!
+    
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var humidityLabel: UILabel!
+    @IBOutlet weak var tempLabel: UILabel!
     
     // MARK: Data
     static let identifier = "ForecastTableViewCell"
@@ -20,8 +24,8 @@ class ForecastTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-//        self.selectionStyle = .none
-//        self.backgroundColor = .clear
+        self.selectionStyle = .none
+        self.backgroundColor = .clear
 //
 //        shadowView.layer.masksToBounds = false
 //        shadowView.layer.shadowColor = AppColor.boxShadow.cgColor
@@ -44,14 +48,9 @@ class ForecastTableViewCell: UITableViewCell {
 //        accountStateLabel.text = ""
     }
     
-    func setCell() {
-//        planNameLabel.text = "สำหรับ\(objective)"
-//        accountNumberLabel.text = "บัญชี: \(accountNumber)"
-//        badgeView.backgroundColor = badgeColor
-//        bottomLineView.isHidden = true
-//
-//        accountStateLabel.text = accountState.title
-//        accountStateLabel.textColor = accountState.getTextColor()
-//        accountWarningBadgeView.isHidden = !isShowWarningBadge
+    func setCell(viewModel: ForecastViewModel.Forecast5Days.Forecast.Value) {
+        timeLabel.text = viewModel.time
+        humidityLabel.text = viewModel.humidity
+        tempLabel.text = viewModel.temp
     }
 }

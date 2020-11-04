@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		6637405B28C23B3BA6EC87D5 /* Pods_weatherTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D396A941025B167CC52B4CF /* Pods_weatherTests.framework */; };
+		842D6340255305F90090FB24 /* ForecastTableViewHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842D633E255305F90090FB24 /* ForecastTableViewHeaderCell.swift */; };
+		842D6341255305F90090FB24 /* ForecastTableViewHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 842D633F255305F90090FB24 /* ForecastTableViewHeaderCell.xib */; };
 		84432A8725519AFE00AFEFBA /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84432A8625519AFE00AFEFBA /* BaseViewController.swift */; };
 		84432A8D25519B5B00AFEFBA /* UIAlertController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84432A8C25519B5B00AFEFBA /* UIAlertController+Extension.swift */; };
 		84432A992551A41D00AFEFBA /* ForecastRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84432A942551A41D00AFEFBA /* ForecastRouter.swift */; };
@@ -63,6 +65,8 @@
 		39F25B747742CB278FE3C95F /* Pods-weatherTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-weatherTests.debug.xcconfig"; path = "Target Support Files/Pods-weatherTests/Pods-weatherTests.debug.xcconfig"; sourceTree = "<group>"; };
 		500304688B60E4F7460E44B1 /* Pods_weather.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_weather.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		56A4BADE688779F3AD7BBAB7 /* Pods-weatherTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-weatherTests.release.xcconfig"; path = "Target Support Files/Pods-weatherTests/Pods-weatherTests.release.xcconfig"; sourceTree = "<group>"; };
+		842D633E255305F90090FB24 /* ForecastTableViewHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForecastTableViewHeaderCell.swift; sourceTree = "<group>"; };
+		842D633F255305F90090FB24 /* ForecastTableViewHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ForecastTableViewHeaderCell.xib; sourceTree = "<group>"; };
 		84432A8625519AFE00AFEFBA /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		84432A8C25519B5B00AFEFBA /* UIAlertController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extension.swift"; sourceTree = "<group>"; };
 		84432A942551A41D00AFEFBA /* ForecastRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForecastRouter.swift; sourceTree = "<group>"; };
@@ -162,6 +166,8 @@
 		84432AA12551AE5B00AFEFBA /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				842D633E255305F90090FB24 /* ForecastTableViewHeaderCell.swift */,
+				842D633F255305F90090FB24 /* ForecastTableViewHeaderCell.xib */,
 				84432AA32551AE7700AFEFBA /* ForecastTableViewCell.swift */,
 				84432AA22551AE7700AFEFBA /* ForecastTableViewCell.xib */,
 			);
@@ -407,6 +413,7 @@
 			files = (
 				84432AA42551AE7700AFEFBA /* ForecastTableViewCell.xib in Resources */,
 				845EB23925506BC3008DA208 /* LaunchScreen.storyboard in Resources */,
+				842D6341255305F90090FB24 /* ForecastTableViewHeaderCell.xib in Resources */,
 				845EB23625506BC3008DA208 /* Assets.xcassets in Resources */,
 				845EB23425506BC2008DA208 /* Main.storyboard in Resources */,
 			);
@@ -551,6 +558,7 @@
 				84432A9D2551A41D00AFEFBA /* ForecastViewModel.swift in Sources */,
 				845EB27625506FDC008DA208 /* WeatherInteractor.swift in Sources */,
 				845EB28025506FED008DA208 /* WeatherRouter.swift in Sources */,
+				842D6340255305F90090FB24 /* ForecastTableViewHeaderCell.swift in Sources */,
 				84432A8D25519B5B00AFEFBA /* UIAlertController+Extension.swift in Sources */,
 				845EB28525507006008DA208 /* WeatherViewModel.swift in Sources */,
 				845EB22D25506BC2008DA208 /* AppDelegate.swift in Sources */,

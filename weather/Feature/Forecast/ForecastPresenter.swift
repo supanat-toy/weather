@@ -18,23 +18,38 @@ class ForecastPresenter: ForecastPresentationLogic {
     
     func getForecast5DaysOnComplete(response: WeatherModel.GetForecast5Days.Response) {
         
-        let forecastList = response.list?.compactMap({ (forecast) -> ForecastViewModel.Forecast5Days.Forecast? in
-            
-            var dateString: String?
+        var forecastByDates = [ForecastViewModel.Forecast5Days.Forecast]()
+        
+        response.list?.forEach({ (forecast) in
+            var date: String?
+            var time: String?
             if let milliseconds = forecast.dt {
-                let date = Date(milliseconds: milliseconds)
-                dateString = date.formattedString(format: "dd/MM/yyyy HH:mm:ss")
+                let dt = Date(milliseconds: milliseconds)
+                date = dt.formattedString(format: "dd/MM/yyyy")
+                time = dt.formattedString(format: "HH:mm:ss")
             }
             
-            return ForecastViewModel.Forecast5Days.Forecast(
-                date: dateString,
-                humidity: forecast.main?.humidity,
-                temp: forecast.main?.temp
+            let value = ForecastViewModel.Forecast5Days.Forecast.Value(
+                time: time,
+                humidity: String(format: "%.2f", forecast.main?.humidity ?? 0.0),
+                temp: String(format: "%.2f", forecast.main?.temp ?? 0.0)
             )
+            
+            if let index = forecastByDates.firstIndex(where: { (va) -> Bool in
+                return va.date == date
+            }), index != -1 {
+                forecastByDates[index].values?.append(value)
+            } else {
+                let forecastDate = ForecastViewModel.Forecast5Days.Forecast(
+                    date: date,
+                    values: [value]
+                )
+                forecastByDates.append(forecastDate)
+            }
         })
         
         let weatherViewModel = ForecastViewModel.Forecast5Days(
-            forecastList: forecastList
+            forecastByDates: forecastByDates
         )
         viewController?.getForecast5DaysOnComplete(viewModel: weatherViewModel)
     }
@@ -43,3 +58,4 @@ class ForecastPresenter: ForecastPresentationLogic {
         viewController?.getForecast5DaysOnError(errorMessage: error.localizedDescription)
     }
 }
+

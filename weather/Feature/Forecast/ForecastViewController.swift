@@ -23,7 +23,7 @@ class ForecastViewController: BaseViewController, ForecastDisplayLogic {
     
     // MARK: Data
     var cityName: String?
-    var forecastViewModelList = [ForecastViewModel.Forecast5Days.Forecast]()
+    var forecastByDates = [ForecastViewModel.Forecast5Days.Forecast]()
     
     // MARK: Object lifecycle
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -40,6 +40,8 @@ class ForecastViewController: BaseViewController, ForecastDisplayLogic {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        registerTableViewCell()
+        setupView()
         setupData()
     }
     
@@ -48,9 +50,21 @@ class ForecastViewController: BaseViewController, ForecastDisplayLogic {
             interactor?.getForecast5Days(cityName: cityName)
         }
     }
+    
+    func setupView() {
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 50
+        
+        tableView.sectionHeaderHeight = UITableView.automaticDimension
+        tableView.estimatedSectionHeaderHeight = 50
+        
+        tableView.sectionFooterHeight = UITableView.automaticDimension
+        tableView.estimatedSectionFooterHeight = 50
+    }
 
     func getForecast5DaysOnComplete(viewModel: ForecastViewModel.Forecast5Days) {
-        forecastViewModelList = viewModel.forecastList ?? []
+        forecastByDates = viewModel.forecastByDates ?? []
+        tableView.reloadData()
     }
     
     func getForecast5DaysOnError(errorMessage: String) {

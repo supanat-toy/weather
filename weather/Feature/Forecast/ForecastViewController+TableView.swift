@@ -15,16 +15,49 @@ extension ForecastViewController: UITableViewDataSource, UITableViewDelegate {
             UINib(nibName: ForecastTableViewCell.identifier, bundle: Bundle.main),
             forCellReuseIdentifier: ForecastTableViewCell.identifier
         )
+        
+        tableView.register(UINib(
+        nibName: ForecastTableViewHeaderCell.identifier, bundle: Bundle.main),
+                           forHeaderFooterViewReuseIdentifier: ForecastTableViewHeaderCell.identifier)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return forecastViewModelList.count
+        return forecastByDates[section].values?.count ?? 0
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return forecastByDates.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section < forecastByDates.count {
+            return UITableView.automaticDimension
+        }
+        return 0.01
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section < forecastByDates.count {
+            guard let cell = tableView.dequeueReusableHeaderFooterView(withIdentifier: ForecastTableViewHeaderCell.identifier)
+                as? ForecastTableViewHeaderCell else {
+                return UITableViewHeaderFooterView()
+            }
+            if let title = forecastByDates[section].date {
+                cell.setCell(title: title)
+            }
+            return cell
+        }
+        return nil
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if section < forecastByDates.count {
+            return UITableView.automaticDimension
+        }
+        return 0.01
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let forecastViewModel = forecastViewModelList[indexPath.row]
-        
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: ForecastTableViewCell.identifier,
             for: indexPath
@@ -32,7 +65,9 @@ extension ForecastViewController: UITableViewDataSource, UITableViewDelegate {
             return UITableViewCell()
         }
         
-        cell.setCell()
+        if let forecastTime = forecastByDates[indexPath.section].values?[indexPath.row] {
+            cell.setCell(viewModel: forecastTime)
+        }
         return cell
         
     }

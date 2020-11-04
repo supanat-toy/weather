@@ -42,6 +42,7 @@ class WeatherViewController: BaseViewController, WeatherDisplayLogic {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        cityTextField.text = "Sukhumvit, TH"
     }
     
     @IBAction func searchOnClick(_ sender: UIButton) {
