@@ -43,11 +43,16 @@ class WeatherViewController: BaseViewController, WeatherDisplayLogic {
         super.viewDidLoad()
         
         cityTextField.text = "Sukhumvit, TH"
+        getCurrentWeather()
     }
     
     @IBAction func searchOnClick(_ sender: UIButton) {
-        cityName = cityTextField.text
-        if let cityName = cityName {
+        getCurrentWeather()
+    }
+    
+    func getCurrentWeather() {
+        if let cityName = cityTextField.text {
+            self.cityName = cityName
             interactor?.getCurrentWeather(cityName: cityName)
         }
     }

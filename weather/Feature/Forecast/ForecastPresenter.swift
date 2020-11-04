@@ -26,7 +26,7 @@ class ForecastPresenter: ForecastPresentationLogic {
             if let milliseconds = forecast.dt {
                 let dt = Date(milliseconds: milliseconds)
                 date = dt.formattedString(format: "dd/MM/yyyy")
-                time = dt.formattedString(format: "HH:mm:ss")
+                time = dt.formattedString(format: "HH:mm")
             }
             
             let value = ForecastViewModel.Forecast5Days.Forecast.Value(
