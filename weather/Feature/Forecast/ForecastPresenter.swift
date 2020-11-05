@@ -8,7 +8,7 @@
 import Foundation
 
 protocol ForecastPresentationLogic {
-    func getForecast5DaysOnComplete(response: WeatherModel.GetForecast5Days.Response)
+    func getForecast5DaysOnComplete(response: WeatherModel.GetForecast5Days.Response, weatherUnit: WeatherUnit)
     func getForecast5DaysOnError(error: Error)
 }
 
@@ -16,8 +16,8 @@ class ForecastPresenter: ForecastPresentationLogic {
     
     var viewController: ForecastDisplayLogic?
     
-    func getForecast5DaysOnComplete(response: WeatherModel.GetForecast5Days.Response) {
-        
+    func getForecast5DaysOnComplete(response: WeatherModel.GetForecast5Days.Response, weatherUnit: WeatherUnit) {
+        let unit = weatherUnit == .celsius ? "C" : "F"
         var forecastByDates = [ForecastViewModel.Forecast5Days.Forecast]()
         
         response.list?.forEach({ (forecast) in
@@ -31,7 +31,7 @@ class ForecastPresenter: ForecastPresentationLogic {
             
             let value = ForecastViewModel.Forecast5Days.Forecast.Value(
                 time: time,
-                tempMaxMin: "\(DataHelper.shared.formattNumberDecimal(number: forecast.main?.temp_max, point: 0))/\(DataHelper.shared.formattNumberDecimal(number: forecast.main?.temp_min, point: 0))°C",
+                tempMaxMin: "\(DataHelper.shared.formattNumberDecimal(number: forecast.main?.temp_max, point: 0))/\(DataHelper.shared.formattNumberDecimal(number: forecast.main?.temp_min, point: 0))°\(unit)",
                 weathericonURL: "http://openweathermap.org/img/wn/\(forecast.weather?.first?.icon ?? "")@2x.png",
                 weatherDescription: forecast.weather?.first?.description ?? ""
             )
