@@ -41,9 +41,11 @@ extension WeatherService: TargetType {
         switch self {
         case .getWeather(let request):
             return ["q": request.cityName,
+                    "units": request.unit,
                     "appid": "2b0f295dfc1c56bf9d42c2b0853d5167"]
         case .getForecast5Days(let request):
             return ["q": request.cityName,
+                    "units": request.unit,
                     "appid": "2b0f295dfc1c56bf9d42c2b0853d5167"]
         }
     }

@@ -19,11 +19,13 @@ class WeatherPresenter: WeatherPresentationLogic {
     func getWeatherOnComplete(response: WeatherModel.GetWeather.Response) {
         
         let weatherViewModel = WeatherViewModel.Weather(
-            timezone: response.timezone,
-            name: response.name,
-            cod: response.cod,
-            humidity: response.main?.humidity,
-            temp: response.main?.temp
+            pressure: DataHelper.shared.formattNumberDecimal(number: response.main?.pressure, point: 0) + " hPa",
+            weatherDescriotion: response.weather?.first?.description ?? "",
+            windSpeed: DataHelper.shared.formattNumberDecimal(number: response.wind?.speed, point: 2) + " m/s NE",
+            humidity: DataHelper.shared.formattNumberDecimal(number: response.main?.humidity, point: 0) + "%",
+            temp: (DataHelper.shared.formattNumberDecimal(number: response.main?.temp, point: 0)) + "°" ,
+            cloud: DataHelper.shared.formattNumberDecimal(number: response.clouds?.all, point: 0) + "%",
+            weathericonURL: "http://openweathermap.org/img/wn/\(response.weather?.first?.icon ?? "")@2x.png"
         )
         viewController?.getCurrentWeatherOnComplete(viewModel: weatherViewModel)
     }

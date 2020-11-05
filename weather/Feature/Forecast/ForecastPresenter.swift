@@ -31,8 +31,8 @@ class ForecastPresenter: ForecastPresentationLogic {
             
             let value = ForecastViewModel.Forecast5Days.Forecast.Value(
                 time: time,
-                humidity: String(format: "%.2f", forecast.main?.humidity ?? 0.0),
-                temp: String(format: "%.2f", forecast.main?.temp ?? 0.0)
+                humidity: DataHelper.shared.formattNumberDecimal(number: forecast.main?.humidity, point: 2),
+                temp: DataHelper.shared.formattNumberDecimal(number: forecast.main?.temp, point: 2)
             )
             
             if let index = forecastByDates.firstIndex(where: { (va) -> Bool in

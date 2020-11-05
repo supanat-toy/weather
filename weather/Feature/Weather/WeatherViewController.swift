@@ -13,19 +13,39 @@ protocol WeatherDisplayLogic {
     func getCurrentWeatherOnError(errorMessage: String)
 }
 
+enum WeatherUnit: String {
+    case celsius = "metric"
+    case fahrenheit = "imperial"
+    
+    var title: String {
+        switch self {
+        case .celsius:
+            return "Celsius"
+        case .fahrenheit:
+            return "Fahrenheit"
+        }
+    }
+}
+
 class WeatherViewController: BaseViewController, WeatherDisplayLogic {
 
     var interactor: WeatherInteractor?
     var router: WeatherRouter?
     
     // MARK: UI
+    @IBOutlet var weatherDescriptionLabel: UILabel!
     @IBOutlet var temperatureLabel: UILabel!
     @IBOutlet var humidityLabel: UILabel!
+    @IBOutlet var windSpeedLabel: UILabel!
+    @IBOutlet var pressureLabel: UILabel!
+    @IBOutlet var cloudLabel: UILabel!
     @IBOutlet var cityTextField: UITextField!
     @IBOutlet var weatherImageView: UIImageView!
+    @IBOutlet var weatherUnitButton: UIButton!
     
     // MARK: Data
     var cityName: String?
+    var weatherUnit: WeatherUnit = .celsius
     
     // MARK: Object lifecycle
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -50,10 +70,19 @@ class WeatherViewController: BaseViewController, WeatherDisplayLogic {
         getCurrentWeather()
     }
     
+    @IBAction func changeWeatherUnit(_ sender: UIButton) {
+        weatherUnit = weatherUnit == .celsius ? .fahrenheit : .celsius
+        getCurrentWeather()
+    }
+    
     func getCurrentWeather() {
+        weatherUnitButton.setTitle(weatherUnit.title, for: .normal)
         if let cityName = cityTextField.text {
             self.cityName = cityName
-            interactor?.getCurrentWeather(cityName: cityName)
+            let unit = weatherUnit
+            
+            self.showLoadingView()
+            interactor?.getCurrentWeather(cityName: cityName, weatherUnit: unit)
         }
     }
     
@@ -62,12 +91,21 @@ class WeatherViewController: BaseViewController, WeatherDisplayLogic {
     }
     
     func getCurrentWeatherOnComplete(viewModel: WeatherViewModel.Weather) {
-        temperatureLabel.text = "\(viewModel.temp ?? 0.0)"
-        humidityLabel.text = "\(viewModel.humidity ?? 0.0)"
+        dismissLoadingView {
+            self.temperatureLabel.text = viewModel.temp
+            self.humidityLabel.text = viewModel.humidity
+            self.pressureLabel.text = viewModel.pressure
+            self.cloudLabel.text = viewModel.cloud
+            self.windSpeedLabel.text = viewModel.windSpeed
+            self.weatherDescriptionLabel.text = viewModel.weatherDescriotion
+            self.weatherImageView.downloaded(from: viewModel.weathericonURL)
+        }
     }
     
     func getCurrentWeatherOnError(errorMessage: String) {
-        alertError(code: nil, message: errorMessage)
+        dismissLoadingView {
+            self.alertError(code: nil, message: errorMessage)
+        }
     }
 }
 

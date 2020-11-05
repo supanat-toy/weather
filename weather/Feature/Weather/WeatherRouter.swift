@@ -23,6 +23,7 @@ class WeatherRouter {
         if segue.identifier == "gotoForecastSegue" {
             if let destinationVC = segue.destination as? ForecastViewController {
                 destinationVC.cityName = viewController?.cityName
+                destinationVC.weatherUnit = viewController?.weatherUnit
             }
         }
     }

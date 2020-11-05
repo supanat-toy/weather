@@ -23,6 +23,7 @@ class ForecastViewController: BaseViewController, ForecastDisplayLogic {
     
     // MARK: Data
     var cityName: String?
+    var weatherUnit: WeatherUnit?
     var forecastByDates = [ForecastViewModel.Forecast5Days.Forecast]()
     
     // MARK: Object lifecycle
@@ -47,7 +48,7 @@ class ForecastViewController: BaseViewController, ForecastDisplayLogic {
     
     func setupData() {
         if let cityName = cityName {
-            interactor?.getForecast5Days(cityName: cityName)
+            interactor?.getForecast5Days(cityName: cityName, weatherUnit: weatherUnit ?? .celsius)
         }
     }
     

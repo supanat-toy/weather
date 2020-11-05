@@ -10,10 +10,12 @@ import Foundation
 enum WeatherViewModel {
     
     struct Weather {
-        var timezone: Int?
-        var name: String?
-        var cod: Int?
-        var humidity: Double?
-        var temp: Double?
+        var pressure: String
+        var weatherDescriotion: String
+        var windSpeed: String
+        var humidity: String
+        var temp: String
+        var cloud: String
+        var weathericonURL: String
     }
 }

@@ -9,7 +9,7 @@ import UIKit
 import RxSwift
 
 protocol WeatherBusinessLogic {
-    func getCurrentWeather(cityName: String)
+    func getCurrentWeather(cityName: String, weatherUnit: WeatherUnit)
 }
 
 class WeatherInteractor: WeatherBusinessLogic {
@@ -24,8 +24,8 @@ class WeatherInteractor: WeatherBusinessLogic {
         self.worker = weatherWorker
     }
     
-    func getCurrentWeather(cityName: String) {
-        let request = WeatherModel.GetWeather.Request(cityName: cityName)
+    func getCurrentWeather(cityName: String, weatherUnit: WeatherUnit) {
+        let request = WeatherModel.GetWeather.Request(cityName: cityName, unit: weatherUnit.rawValue)
         let dispose = worker?.GetWeather(request: request).subscribe(onNext: { (response) in
             self.presenter?.getWeatherOnComplete(response: response)
         }, onError: { (error) in
