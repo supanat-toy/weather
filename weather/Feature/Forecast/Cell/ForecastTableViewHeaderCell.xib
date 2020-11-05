@@ -16,18 +16,18 @@
                     <rect key="frame" x="0.0" y="0.0" width="374" height="59"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fa4-Xm-D33" customClass="AppLabel30BoldBlack" customModule="weather" customModuleProvider="target">
-                            <rect key="frame" x="20" y="10" width="334" height="49"/>
-                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
-                            <color key="textColor" red="0.72549019609999998" green="0.72549019609999998" blue="0.72549019609999998" alpha="1" colorSpace="calibratedRGB"/>
+                            <rect key="frame" x="20" y="7" width="334" height="47"/>
+                            <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="18"/>
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="fa4-Xm-D33" secondAttribute="trailing" constant="20" id="PoY-rn-Szx"/>
-                        <constraint firstItem="fa4-Xm-D33" firstAttribute="top" secondItem="FoT-eG-qri" secondAttribute="top" constant="10" id="ehx-9z-eMw"/>
+                        <constraint firstItem="fa4-Xm-D33" firstAttribute="top" secondItem="FoT-eG-qri" secondAttribute="top" constant="7" id="ehx-9z-eMw"/>
                         <constraint firstItem="fa4-Xm-D33" firstAttribute="leading" secondItem="FoT-eG-qri" secondAttribute="leading" constant="20" id="f7r-zb-gx2"/>
-                        <constraint firstAttribute="bottom" secondItem="fa4-Xm-D33" secondAttribute="bottom" id="qrI-Bu-dNQ"/>
+                        <constraint firstAttribute="bottom" secondItem="fa4-Xm-D33" secondAttribute="bottom" constant="5" id="qrI-Bu-dNQ"/>
                     </constraints>
                 </view>
             </subviews>

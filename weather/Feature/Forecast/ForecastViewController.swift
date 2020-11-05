@@ -20,10 +20,16 @@ class ForecastViewController: BaseViewController, ForecastDisplayLogic {
     
     // MARK: UI
     @IBOutlet var tableView: UITableView!
+    @IBOutlet var temperatureLabel: UILabel!
+    @IBOutlet var weatherDescriptionLabel: UILabel!
+    @IBOutlet var weatherImageView: UIImageView!
     
     // MARK: Data
     var cityName: String?
     var weatherUnit: WeatherUnit?
+    var temperature: String?
+    var weatherDescription: String?
+    var weatherImage: UIImage?
     var forecastByDates = [ForecastViewModel.Forecast5Days.Forecast]()
     
     // MARK: Object lifecycle
@@ -48,11 +54,17 @@ class ForecastViewController: BaseViewController, ForecastDisplayLogic {
     
     func setupData() {
         if let cityName = cityName {
+            showLoadingView()
             interactor?.getForecast5Days(cityName: cityName, weatherUnit: weatherUnit ?? .celsius)
         }
     }
     
     func setupView() {
+        self.title = cityName
+        temperatureLabel.text = temperature
+        weatherDescriptionLabel.text = weatherDescription
+        weatherImageView.image = weatherImage
+        
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 50
         
@@ -64,12 +76,17 @@ class ForecastViewController: BaseViewController, ForecastDisplayLogic {
     }
 
     func getForecast5DaysOnComplete(viewModel: ForecastViewModel.Forecast5Days) {
-        forecastByDates = viewModel.forecastByDates ?? []
-        tableView.reloadData()
+        dismissLoadingView {
+            self.forecastByDates = viewModel.forecastByDates ?? []
+            self.tableView.reloadData()
+        }
+        
     }
     
     func getForecast5DaysOnError(errorMessage: String) {
-        alertError(code: nil, message: errorMessage)
+        dismissLoadingView {
+            self.alertError(code: nil, message: errorMessage)
+        }
     }
 }
 

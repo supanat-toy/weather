@@ -33,6 +33,9 @@ class WeatherViewController: BaseViewController, WeatherDisplayLogic {
     var router: WeatherRouter?
     
     // MARK: UI
+    @IBOutlet var containerTopView: UIView!
+    @IBOutlet var containerBelowView: UIView!
+    
     @IBOutlet var weatherDescriptionLabel: UILabel!
     @IBOutlet var temperatureLabel: UILabel!
     @IBOutlet var humidityLabel: UILabel!
@@ -64,6 +67,15 @@ class WeatherViewController: BaseViewController, WeatherDisplayLogic {
         
         cityTextField.text = "Sukhumvit, TH"
         getCurrentWeather()
+    }
+    
+    func setupView() {
+        containerTopView.layer.masksToBounds = false
+        containerTopView.layer.shadowColor = UIColor.white.cgColor
+        containerTopView.layer.shadowOpacity = 0.5
+        containerTopView.layer.shadowOffset = .zero
+        containerTopView.layer.shadowRadius = 5
+        containerTopView.layer.cornerRadius = 5
     }
     
     @IBAction func searchOnClick(_ sender: UIButton) {

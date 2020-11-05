@@ -67,7 +67,7 @@ enum WeatherModel {
             struct Forecast: Decodable {
                 var dt: Int64?
                 var main: Main?
-                var weather: Weather?
+                var weather: [Weather]?
                 var wind: Wind?
                 var clouds: Cloud?
                 

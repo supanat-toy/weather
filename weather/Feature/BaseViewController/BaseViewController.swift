@@ -40,4 +40,14 @@ class BaseViewController: ViewController {
         alertController.addAction(action)
         alertController.present(animated: true, completion: nil)
     }
+    
+    var statusBarStyle: UIStatusBarStyle = .lightContent {
+        didSet {
+            setNeedsStatusBarAppearanceUpdate()
+        }
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return statusBarStyle
+    }
 }

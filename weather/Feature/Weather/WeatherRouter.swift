@@ -24,6 +24,9 @@ class WeatherRouter {
             if let destinationVC = segue.destination as? ForecastViewController {
                 destinationVC.cityName = viewController?.cityName
                 destinationVC.weatherUnit = viewController?.weatherUnit
+                destinationVC.temperature = viewController?.temperatureLabel.text
+                destinationVC.weatherDescription = viewController?.weatherDescriptionLabel.text
+                destinationVC.weatherImage = viewController?.weatherImageView.image
             }
         }
     }

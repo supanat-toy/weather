@@ -21,24 +21,25 @@ class ForecastPresenter: ForecastPresentationLogic {
         var forecastByDates = [ForecastViewModel.Forecast5Days.Forecast]()
         
         response.list?.forEach({ (forecast) in
-            var date: String?
-            var time: String?
+            var date = ""
+            var time = ""
             if let milliseconds = forecast.dt {
                 let dt = Date(milliseconds: milliseconds)
-                date = dt.formattedString(format: "dd/MM/yyyy")
+                date = dt.formattedString(format: "EEEE, MMMM d")
                 time = dt.formattedString(format: "HH:mm")
             }
             
             let value = ForecastViewModel.Forecast5Days.Forecast.Value(
                 time: time,
-                humidity: DataHelper.shared.formattNumberDecimal(number: forecast.main?.humidity, point: 2),
-                temp: DataHelper.shared.formattNumberDecimal(number: forecast.main?.temp, point: 2)
+                tempMaxMin: "\(DataHelper.shared.formattNumberDecimal(number: forecast.main?.temp_max, point: 0))/\(DataHelper.shared.formattNumberDecimal(number: forecast.main?.temp_min, point: 0))°C",
+                weathericonURL: "http://openweathermap.org/img/wn/\(forecast.weather?.first?.icon ?? "")@2x.png",
+                weatherDescription: forecast.weather?.first?.description ?? ""
             )
             
             if let index = forecastByDates.firstIndex(where: { (va) -> Bool in
                 return va.date == date
             }), index != -1 {
-                forecastByDates[index].values?.append(value)
+                forecastByDates[index].values.append(value)
             } else {
                 let forecastDate = ForecastViewModel.Forecast5Days.Forecast(
                     date: date,

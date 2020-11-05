@@ -15,8 +15,9 @@ class ForecastTableViewCell: UITableViewCell {
 //    @IBOutlet weak var badgeView: UIView!
     
     @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var humidityLabel: UILabel!
     @IBOutlet weak var tempLabel: UILabel!
+    @IBOutlet weak var weatherImageView: UIImageView!
+    @IBOutlet weak var descriptionLabel: UILabel!
     
     // MARK: Data
     static let identifier = "ForecastTableViewCell"
@@ -25,7 +26,7 @@ class ForecastTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
         self.selectionStyle = .none
-        self.backgroundColor = .clear
+        self.backgroundColor = .white
 //
 //        shadowView.layer.masksToBounds = false
 //        shadowView.layer.shadowColor = AppColor.boxShadow.cgColor
@@ -41,16 +42,17 @@ class ForecastTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        
-//        badgeView.backgroundColor = AppColor.grey
-//        accountNumberLabel.text = ""
-//        planNameLabel.text = ""
-//        accountStateLabel.text = ""
+
+        timeLabel.text = ""
+        tempLabel.text = ""
+        weatherImageView.image = UIImage()
+        descriptionLabel.text = ""
     }
     
     func setCell(viewModel: ForecastViewModel.Forecast5Days.Forecast.Value) {
         timeLabel.text = viewModel.time
-        humidityLabel.text = viewModel.humidity
-        tempLabel.text = viewModel.temp
+        tempLabel.text = viewModel.tempMaxMin
+        weatherImageView.downloaded(from: viewModel.weathericonURL)
+        descriptionLabel.text = viewModel.weatherDescription
     }
 }

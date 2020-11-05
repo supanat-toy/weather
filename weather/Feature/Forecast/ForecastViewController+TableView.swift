@@ -22,7 +22,7 @@ extension ForecastViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return forecastByDates[section].values?.count ?? 0
+        return forecastByDates[section].values.count
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -42,18 +42,16 @@ extension ForecastViewController: UITableViewDataSource, UITableViewDelegate {
                 as? ForecastTableViewHeaderCell else {
                 return UITableViewHeaderFooterView()
             }
-            if let title = forecastByDates[section].date {
-                cell.setCell(title: title)
-            }
+            cell.setCell(title: forecastByDates[section].date)
             return cell
         }
         return nil
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        if section < forecastByDates.count {
-            return UITableView.automaticDimension
-        }
+//        if section < forecastByDates.count {
+//            return UITableView.automaticDimension
+//        }
         return 0.01
     }
     
@@ -65,9 +63,9 @@ extension ForecastViewController: UITableViewDataSource, UITableViewDelegate {
             return UITableViewCell()
         }
         
-        if let forecastTime = forecastByDates[indexPath.section].values?[indexPath.row] {
-            cell.setCell(viewModel: forecastTime)
-        }
+        let forecastTime = forecastByDates[indexPath.section].values[indexPath.row]
+        cell.setCell(viewModel: forecastTime)
+        
         return cell
         
     }
