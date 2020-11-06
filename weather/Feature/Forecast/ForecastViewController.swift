@@ -25,11 +25,7 @@ class ForecastViewController: BaseViewController, ForecastDisplayLogic {
     @IBOutlet var weatherImageView: UIImageView!
     
     // MARK: Data
-    var cityName: String?
-    var weatherUnit: WeatherUnit?
-    var temperature: String?
-    var weatherDescription: String?
-    var weatherImage: UIImage?
+    var weatherDataStore: WeatherDataStore?
     var forecastByDates = [ForecastViewModel.Forecast5Days.Forecast]()
     
     // MARK: Object lifecycle
@@ -53,17 +49,19 @@ class ForecastViewController: BaseViewController, ForecastDisplayLogic {
     }
     
     func setupData() {
-        if let cityName = cityName {
+        if let cityName = weatherDataStore?.cityName {
             showLoadingView()
-            interactor?.getForecast5Days(cityName: cityName, weatherUnit: weatherUnit ?? .celsius)
+            interactor?.getForecast5Days(cityName: cityName, weatherUnit: weatherDataStore?.weatherUnit ?? .celsius)
         }
     }
     
     func setupView() {
-        self.title = cityName
-        temperatureLabel.text = temperature
-        weatherDescriptionLabel.text = weatherDescription
-        weatherImageView.image = weatherImage
+        self.title = weatherDataStore?.cityName
+        temperatureLabel.text = weatherDataStore?.temperature
+        weatherDescriptionLabel.text = weatherDataStore?.weatherDescription
+        if let weatherImageURL = weatherDataStore?.weatherImageURL {
+            weatherImageView.downloaded(from: weatherImageURL)
+        }
         
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 50

@@ -8,12 +8,16 @@
 import UIKit
 
 protocol WeatherRoutingLogic {
-    func navigateToOrderStatusFundDetail()
+    func navigateToForecastSegue()
     func prepare(for segue: UIStoryboardSegue, sender: Any?)
 }
 
-class WeatherRouter {
+class WeatherRouter: WeatherRoutingLogic {
     var viewController: WeatherViewController?
+    
+    init(viewController: WeatherViewController? = nil) {
+        self.viewController = viewController
+    }
     
     func navigateToForecastSegue() {
         self.viewController?.performSegue(withIdentifier: "gotoForecastSegue", sender: self.viewController)
@@ -22,11 +26,7 @@ class WeatherRouter {
     func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "gotoForecastSegue" {
             if let destinationVC = segue.destination as? ForecastViewController {
-                destinationVC.cityName = viewController?.cityName
-                destinationVC.weatherUnit = viewController?.weatherUnit
-                destinationVC.temperature = viewController?.temperatureLabel.text
-                destinationVC.weatherDescription = viewController?.weatherDescriptionLabel.text
-                destinationVC.weatherImage = viewController?.weatherImageView.image
+                destinationVC.weatherDataStore = viewController?.weatherDataStore
             }
         }
     }

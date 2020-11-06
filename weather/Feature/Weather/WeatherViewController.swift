@@ -47,8 +47,8 @@ class WeatherViewController: BaseViewController, WeatherDisplayLogic {
     @IBOutlet var weatherUnitButton: UIButton!
     
     // MARK: Data
-    var cityName: String?
     var weatherUnit: WeatherUnit = .celsius
+    var weatherDataStore: WeatherDataStore?
     
     // MARK: Object lifecycle
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -65,9 +65,13 @@ class WeatherViewController: BaseViewController, WeatherDisplayLogic {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        cityTextField.text = "Sukhumvit, TH"
         setupView()
+        setupData()
         getCurrentWeather()
+    }
+    
+    func setupData() {
+        weatherDataStore = WeatherDataStore(weatherUnit: weatherUnit)
     }
     
     func setupView() {
@@ -77,6 +81,8 @@ class WeatherViewController: BaseViewController, WeatherDisplayLogic {
         containerTopView.layer.shadowOffset = .zero
         containerTopView.layer.shadowRadius = 5
         containerTopView.layer.cornerRadius = 5
+        
+        cityTextField.text = "Sukhumvit, TH"
     }
     
     @IBAction func searchOnClick(_ sender: UIButton) {
@@ -91,7 +97,7 @@ class WeatherViewController: BaseViewController, WeatherDisplayLogic {
     func getCurrentWeather() {
         weatherUnitButton.setTitle(weatherUnit.title, for: .normal)
         if let cityName = cityTextField.text {
-            self.cityName = cityName
+            self.weatherDataStore?.cityName = cityName
             let unit = weatherUnit
             
             self.showLoadingView()
@@ -112,6 +118,10 @@ class WeatherViewController: BaseViewController, WeatherDisplayLogic {
             self.windSpeedLabel.text = viewModel.windSpeed
             self.weatherDescriptionLabel.text = viewModel.weatherDescriotion
             self.weatherImageView.downloaded(from: viewModel.weathericonURL)
+            
+            self.weatherDataStore?.temperature = viewModel.temp
+            self.weatherDataStore?.weatherImageURL = viewModel.weathericonURL
+            self.weatherDataStore?.weatherDescription = viewModel.weatherDescriotion
         }
     }
     

@@ -11,8 +11,12 @@ protocol ForecastRoutingLogic {
     func prepare(for segue: UIStoryboardSegue, sender: Any?)
 }
 
-class ForecastRouter {
+class ForecastRouter: ForecastRoutingLogic {
     var viewController: ForecastViewController?
+    
+    init(viewController: ForecastViewController? = nil) {
+        self.viewController = viewController
+    }
     
     func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
