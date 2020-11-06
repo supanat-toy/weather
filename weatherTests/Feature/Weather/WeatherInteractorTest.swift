@@ -15,6 +15,7 @@ class WeatherInteractorTest: XCTestCase {
     var presenter: MockWeatherPresenter!
     
     override func setUp() {
+        super.setUp()
         self.presenter = MockWeatherPresenter()
     }
     
@@ -49,7 +50,9 @@ class WeatherInteractorTest: XCTestCase {
         
         XCTAssertTrue(presenter.isCalledGetWeatherOnError)
         XCTAssertFalse(presenter.isCalledGetWeatherOnComplete)
-        XCTAssertNotNil(presenter.error)
+        XCTAssertEqual("Error-500", presenter.error?.code)
+        XCTAssertEqual("Something is wrong!", presenter.error?.message)
+        XCTAssertEqual(500, presenter.error?.httpStatusCode)
     }
 }
 

@@ -15,8 +15,8 @@ protocol ForecastDisplayLogic {
 
 class ForecastViewController: BaseViewController, ForecastDisplayLogic {
 
-    var interactor: ForecastInteractor?
-    var router: ForecastRouter?
+    var interactor: ForecastBusinessLogic?
+    var router: ForecastRoutingLogic?
     
     // MARK: UI
     @IBOutlet var tableView: UITableView!

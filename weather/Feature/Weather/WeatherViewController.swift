@@ -29,12 +29,11 @@ enum WeatherUnit: String {
 
 class WeatherViewController: BaseViewController, WeatherDisplayLogic {
 
-    var interactor: WeatherInteractor?
-    var router: WeatherRouter?
+    var interactor: WeatherBusinessLogic?
+    var router: WeatherRoutingLogic?
     
     // MARK: UI
     @IBOutlet var containerTopView: UIView!
-    @IBOutlet var containerBelowView: UIView!
     
     @IBOutlet var weatherDescriptionLabel: UILabel!
     @IBOutlet var temperatureLabel: UILabel!
@@ -96,12 +95,10 @@ class WeatherViewController: BaseViewController, WeatherDisplayLogic {
     
     func getCurrentWeather() {
         weatherUnitButton.setTitle(weatherUnit.title, for: .normal)
-        if let cityName = cityTextField.text {
+        if let cityName = cityTextField.text, !cityName.isEmpty {
             self.weatherDataStore?.cityName = cityName
-            let unit = weatherUnit
-            
             self.showLoadingView()
-            interactor?.getCurrentWeather(cityName: cityName, weatherUnit: unit)
+            interactor?.getCurrentWeather(cityName: cityName, weatherUnit: weatherUnit)
         }
     }
     

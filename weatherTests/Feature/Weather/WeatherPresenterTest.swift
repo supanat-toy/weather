@@ -15,6 +15,7 @@ class WeatherPresenterTest: XCTestCase {
     var viewController: MockWeatherViewController!
     
     override func setUp() {
+        super.setUp()
         self.viewController = MockWeatherViewController()
         self.presenter = WeatherPresenter(viewController: viewController)
     }

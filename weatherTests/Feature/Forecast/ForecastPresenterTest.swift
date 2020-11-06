@@ -15,6 +15,7 @@ class ForecastPresenterTest: XCTestCase {
     var viewController: MockForecastViewController!
     
     override func setUp() {
+        super.setUp()
         self.viewController = MockForecastViewController()
         self.presenter = ForecastPresenter(viewController: viewController)
     }

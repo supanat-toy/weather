@@ -15,6 +15,7 @@ class ForecastInteractorTest: XCTestCase {
     var presenter: MockForecastPresenter!
     
     override func setUp() {
+        super.setUp()
         self.presenter = MockForecastPresenter()
     }
     
@@ -69,7 +70,9 @@ class ForecastInteractorTest: XCTestCase {
         
         XCTAssertTrue(presenter.isCalledGetForecastOnError)
         XCTAssertFalse(presenter.isCalledGetForecastOnComplete)
-        XCTAssertNotNil(presenter.error)
+        XCTAssertEqual("Error-500", presenter.error?.code)
+        XCTAssertEqual("Something is wrong!", presenter.error?.message)
+        XCTAssertEqual(500, presenter.error?.httpStatusCode)
     }
 }
 

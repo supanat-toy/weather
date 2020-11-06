@@ -24,7 +24,7 @@ class WeatherRouterTest: XCTestCase {
         XCTAssertEqual("gotoForecastSegue", mockViewController.identifier)
     }
 
-    func testAA() {
+    func testPassingDataToDestinationViewController() {
         mockViewController.weatherDataStore = WeatherDataStore(
             cityName: "city name 1",
             weatherUnit: .celsius,

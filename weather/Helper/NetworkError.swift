@@ -40,6 +40,7 @@ struct NetworkError: Swift.Error, Equatable, Codable {
     
     init(response: Response?) {
         if let response = response {
+            self.httpStatusCode = response.statusCode
             if let json = try? JSONSerialization.jsonObject(with: response.data, options: []) as? [String: Any] {
                 self.code = json["cod"] as? String ?? ""
                 self.message = json["message"] as? String ?? ""

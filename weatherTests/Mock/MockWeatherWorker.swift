@@ -109,7 +109,7 @@ class MockWeatherWorkerError: WeatherWorkerProtocol {
     let error = """
                 {
                 "cod": "Error-500",
-                "message": "Something is wrong"
+                "message": "Something is wrong!"
                 }
         """
     
