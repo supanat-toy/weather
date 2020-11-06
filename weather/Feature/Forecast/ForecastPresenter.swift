@@ -16,6 +16,10 @@ class ForecastPresenter: ForecastPresentationLogic {
     
     var viewController: ForecastDisplayLogic?
     
+    init(viewController: ForecastDisplayLogic? = nil) {
+        self.viewController = viewController
+    }
+    
     func getForecast5DaysOnComplete(response: WeatherModel.GetForecast5Days.Response, weatherUnit: WeatherUnit) {
         let unit = weatherUnit == .celsius ? "C" : "F"
         var forecastByDates = [ForecastViewModel.Forecast5Days.Forecast]()

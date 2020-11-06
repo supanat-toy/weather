@@ -9,7 +9,7 @@ import Foundation
 import XCTest
 @testable import weather
 
-class ForecastInteractorTest: XCTest {
+class ForecastInteractorTest: XCTestCase {
     
     var interactor: ForecastInteractor!
     var presenter: MockForecastPresenter!
@@ -30,8 +30,8 @@ class ForecastInteractorTest: XCTest {
         
         XCTAssertEqual(WeatherUnit.fahrenheit, presenter.weatherUnit)
         XCTAssertEqual(104323312, presenter.response?.list?[0].dt)
-        XCTAssertEqual("cloud", presenter.response?.list?[0].weather?.first?.main)
-        XCTAssertEqual("clear cloud", presenter.response?.list?[0].weather?.first?.description)
+        XCTAssertEqual("Rain", presenter.response?.list?[0].weather?.first?.main)
+        XCTAssertEqual("heavy rain", presenter.response?.list?[0].weather?.first?.description)
         XCTAssertEqual("11d", presenter.response?.list?[0].weather?.first?.icon)
         XCTAssertEqual(37.23, presenter.response?.list?[0].main?.temp)
         XCTAssertEqual(37.02, presenter.response?.list?[0].main?.temp_min)
@@ -46,8 +46,8 @@ class ForecastInteractorTest: XCTest {
         XCTAssertEqual(80, presenter.response?.list?[0].clouds?.all)
         
         XCTAssertEqual(104324342, presenter.response?.list?[1].dt)
-        XCTAssertEqual("Sun", presenter.response?.list?[1].weather?.first?.main)
-        XCTAssertEqual("Sun light", presenter.response?.list?[1].weather?.first?.description)
+        XCTAssertEqual("Cloud", presenter.response?.list?[1].weather?.first?.main)
+        XCTAssertEqual("Clear cloud", presenter.response?.list?[1].weather?.first?.description)
         XCTAssertEqual("02n", presenter.response?.list?[1].weather?.first?.icon)
         XCTAssertEqual(37.23, presenter.response?.list?[1].main?.temp)
         XCTAssertEqual(37.19, presenter.response?.list?[1].main?.temp_min)

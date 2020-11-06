@@ -9,7 +9,7 @@ import Foundation
 import XCTest
 @testable import weather
 
-class WeatherInteractorTest: XCTest {
+class WeatherInteractorTest: XCTestCase {
     
     var interactor: WeatherInteractor!
     var presenter: MockWeatherPresenter!

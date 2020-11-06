@@ -16,6 +16,10 @@ class WeatherPresenter: WeatherPresentationLogic {
     
     var viewController: WeatherDisplayLogic?
     
+    init(viewController: WeatherDisplayLogic? = nil) {
+        self.viewController = viewController
+    }
+    
     func getWeatherOnComplete(response: WeatherModel.GetWeather.Response, weatherUnit: WeatherUnit) {
         let unit = weatherUnit == .celsius ? "C" : "F"
         
