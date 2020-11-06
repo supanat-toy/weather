@@ -29,7 +29,7 @@ class ForecastInteractor: ForecastBusinessLogic {
         let dispose = worker?.GetForecast5Days(request: request).subscribe(onNext: { (response) in
             self.presenter?.getForecast5DaysOnComplete(response: response, weatherUnit: weatherUnit)
         }, onError: { (error) in
-            self.presenter?.getForecast5DaysOnError(error: error)
+            self.presenter?.getForecast5DaysOnError(error: NetworkError(error: error))
         })
         dispose?.disposed(by: disposeBag)
     }

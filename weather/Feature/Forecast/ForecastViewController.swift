@@ -85,7 +85,7 @@ class ForecastViewController: BaseViewController, ForecastDisplayLogic {
     
     func getForecast5DaysOnError(errorMessage: String) {
         dismissLoadingView {
-            self.alertError(code: nil, message: errorMessage)
+            self.alertError(message: errorMessage)
         }
     }
 }

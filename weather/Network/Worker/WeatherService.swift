@@ -16,6 +16,8 @@ enum WeatherService {
 
 extension WeatherService: TargetType {
 
+    var APP_ID: String { return "2b0f295dfc1c56bf9d42c2b0853d5167" }
+    
     public var baseURL: URL {
         return URL(string: "http://api.openweathermap.org/data/2.5")!
     }
@@ -42,11 +44,11 @@ extension WeatherService: TargetType {
         case .getWeather(let request):
             return ["q": request.cityName,
                     "units": request.unit,
-                    "appid": "2b0f295dfc1c56bf9d42c2b0853d5167"]
+                    "appid": APP_ID]
         case .getForecast5Days(let request):
             return ["q": request.cityName,
                     "units": request.unit,
-                    "appid": "2b0f295dfc1c56bf9d42c2b0853d5167"]
+                    "appid": APP_ID]
         }
     }
     

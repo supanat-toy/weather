@@ -74,8 +74,12 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tPl-Oh-cUF">
-                                                <rect key="frame" x="274" y="-10" width="120" height="100"/>
-                                                <color key="backgroundColor" red="0.13333333333333333" green="0.16078431372549018" blue="0.27450980392156865" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <rect key="frame" x="274" y="0.0" width="110" height="90"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="110" id="18i-BQ-eBB"/>
+                                                    <constraint firstAttribute="height" constant="90" id="bPi-0c-IaK"/>
+                                                </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                         <integer key="value" value="15"/>
@@ -85,10 +89,6 @@
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5kT-lH-ySa">
                                                 <rect key="frame" x="284" y="10" width="90" height="70"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="90" id="FQn-rY-YRF"/>
-                                                    <constraint firstAttribute="height" constant="70" id="M4f-qv-Fnt"/>
-                                                </constraints>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="msr-ZJ-df5">
                                                 <rect key="frame" x="323" y="105" width="46" height="30"/>
@@ -105,8 +105,8 @@
                                             <constraint firstAttribute="trailing" secondItem="msr-ZJ-df5" secondAttribute="trailing" constant="15" id="5Zg-3U-h9d"/>
                                             <constraint firstItem="Ctl-G7-7Il" firstAttribute="top" secondItem="d3c-zy-5Zm" secondAttribute="bottom" constant="-5" id="7BB-xo-1oG"/>
                                             <constraint firstAttribute="height" constant="150" id="Ciz-yc-t5l"/>
-                                            <constraint firstAttribute="trailing" secondItem="tPl-Oh-cUF" secondAttribute="trailing" constant="-10" id="OAF-uO-dyU"/>
-                                            <constraint firstItem="tPl-Oh-cUF" firstAttribute="top" secondItem="I6b-mn-Opp" secondAttribute="top" constant="-10" id="PLR-Jx-l58"/>
+                                            <constraint firstAttribute="trailing" secondItem="tPl-Oh-cUF" secondAttribute="trailing" id="OAF-uO-dyU"/>
+                                            <constraint firstItem="tPl-Oh-cUF" firstAttribute="top" secondItem="I6b-mn-Opp" secondAttribute="top" id="PLR-Jx-l58"/>
                                             <constraint firstItem="Ctl-G7-7Il" firstAttribute="leading" secondItem="d3c-zy-5Zm" secondAttribute="leading" id="SGN-WZ-fui"/>
                                             <constraint firstItem="5kT-lH-ySa" firstAttribute="top" secondItem="I6b-mn-Opp" secondAttribute="top" constant="10" id="ccA-DE-SZS"/>
                                             <constraint firstItem="d3c-zy-5Zm" firstAttribute="top" secondItem="I6b-mn-Opp" secondAttribute="top" constant="10" id="fsO-zP-7Dh"/>
@@ -151,20 +151,20 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="184.5" height="128"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="76%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ocw-7O-veq">
-                                                                <rect key="frame" x="71.5" y="10" width="42" height="27.5"/>
+                                                                <rect key="frame" x="71.5" y="10" width="42" height="51"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                                                 <color key="textColor" red="0.68470364809999995" green="0.82884943489999996" blue="0.96080356840000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-humidity" translatesAutoresizingMaskIntoConstraints="NO" id="3lf-hL-5yr">
-                                                                <rect key="frame" x="82.5" y="42.5" width="20" height="20"/>
+                                                                <rect key="frame" x="82.5" y="66" width="20" height="20"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="20" id="ag3-vL-gT5"/>
                                                                     <constraint firstAttribute="height" constant="20" id="q9N-I9-Ans"/>
                                                                 </constraints>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Humidity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WDI-qa-KJu">
-                                                                <rect key="frame" x="60" y="72.5" width="65" height="45.5"/>
+                                                                <rect key="frame" x="60" y="96" width="65" height="22"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
@@ -190,20 +190,20 @@
                                                         <rect key="frame" x="199.5" y="0.0" width="184.5" height="128"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="76%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TAt-xD-3Qg">
-                                                                <rect key="frame" x="71.5" y="10" width="42" height="51"/>
+                                                                <rect key="frame" x="71.5" y="10" width="42" height="27.5"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                                                 <color key="textColor" red="0.68470364809999995" green="0.82884943489999996" blue="0.96080356840000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-pressure" translatesAutoresizingMaskIntoConstraints="NO" id="n0i-sa-qAc">
-                                                                <rect key="frame" x="82.5" y="66" width="20" height="20"/>
+                                                                <rect key="frame" x="82.5" y="42.5" width="20" height="20"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="20" id="CBs-i6-Arp"/>
                                                                     <constraint firstAttribute="height" constant="20" id="f33-YW-ysJ"/>
                                                                 </constraints>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pressure" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v2g-Nr-Q8a">
-                                                                <rect key="frame" x="62.5" y="96" width="60" height="22"/>
+                                                                <rect key="frame" x="62.5" y="72.5" width="60" height="45.5"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
@@ -234,20 +234,20 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="184.5" height="128"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="76%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="042-vp-zt0">
-                                                                <rect key="frame" x="71.5" y="10" width="42" height="27.5"/>
+                                                                <rect key="frame" x="71.5" y="10" width="42" height="51"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                                                 <color key="textColor" red="0.68470364809999995" green="0.82884943489999996" blue="0.96080356840000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-wind" translatesAutoresizingMaskIntoConstraints="NO" id="mLa-uS-pif">
-                                                                <rect key="frame" x="82.5" y="42.5" width="20" height="20"/>
+                                                                <rect key="frame" x="82.5" y="66" width="20" height="20"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="20" id="CWj-wH-hBo"/>
                                                                     <constraint firstAttribute="height" constant="20" id="bBQ-at-JPy"/>
                                                                 </constraints>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wind" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2CH-pk-TmM">
-                                                                <rect key="frame" x="73.5" y="72.5" width="38" height="45.5"/>
+                                                                <rect key="frame" x="73.5" y="96" width="38" height="22"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
@@ -273,20 +273,20 @@
                                                         <rect key="frame" x="199.5" y="0.0" width="184.5" height="128"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="76%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hD1-9D-zFu">
-                                                                <rect key="frame" x="71.5" y="10" width="42" height="27.5"/>
+                                                                <rect key="frame" x="71.5" y="10" width="42" height="51"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                                                 <color key="textColor" red="0.68470364809999995" green="0.82884943489999996" blue="0.96080356840000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_cloud" translatesAutoresizingMaskIntoConstraints="NO" id="IFy-g5-sK4">
-                                                                <rect key="frame" x="82.5" y="42.5" width="20" height="20"/>
+                                                                <rect key="frame" x="82.5" y="66" width="20" height="20"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="20" id="8ih-5R-EaD"/>
                                                                     <constraint firstAttribute="width" constant="20" id="WPp-Ug-XBi"/>
                                                                 </constraints>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cloud" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iyd-Py-qcv">
-                                                                <rect key="frame" x="70.5" y="72.5" width="43.5" height="45.5"/>
+                                                                <rect key="frame" x="70.5" y="96" width="43.5" height="22"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
@@ -393,7 +393,7 @@
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </imageView>
                                                 </subviews>
-                                                <color key="backgroundColor" red="0.095385111892179991" green="0.11509649819365035" blue="0.19996761658031093" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="115" id="Fg3-QD-Wy0"/>
                                                     <constraint firstAttribute="bottom" secondItem="qec-HT-TSX" secondAttribute="bottom" constant="10" id="UZ7-An-Ypx"/>
@@ -427,7 +427,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" red="0.13333333333333333" green="0.16078431372549018" blue="0.27450980392156865" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.1535778642" green="0.18059033159999999" blue="0.3179860115" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="cV9-Ya-JdR" firstAttribute="top" secondItem="rUh-fn-CqW" secondAttribute="top" constant="15" id="FqD-Jy-7Pc"/>
                                     <constraint firstAttribute="bottom" secondItem="cV9-Ya-JdR" secondAttribute="bottom" constant="15" id="Gvg-e8-DFN"/>

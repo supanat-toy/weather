@@ -9,7 +9,7 @@ import Foundation
 
 protocol ForecastPresentationLogic {
     func getForecast5DaysOnComplete(response: WeatherModel.GetForecast5Days.Response, weatherUnit: WeatherUnit)
-    func getForecast5DaysOnError(error: Error)
+    func getForecast5DaysOnError(error: NetworkError)
 }
 
 class ForecastPresenter: ForecastPresentationLogic {
@@ -55,8 +55,9 @@ class ForecastPresenter: ForecastPresentationLogic {
         viewController?.getForecast5DaysOnComplete(viewModel: weatherViewModel)
     }
     
-    func getForecast5DaysOnError(error: Error) {
-        viewController?.getForecast5DaysOnError(errorMessage: error.localizedDescription)
+    func getForecast5DaysOnError(error: NetworkError) {
+        let errorMessage = "Error code: \(error.code ?? "")\nmessage: \(error.message ?? "")"
+        viewController?.getForecast5DaysOnError(errorMessage: errorMessage)
     }
 }
 

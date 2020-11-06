@@ -29,8 +29,8 @@ class BaseViewController: ViewController {
         })
     }
     
-    func alertError(code: String?, message: String) {
-        alert(title: code ?? "", message: message)
+    func alertError(message: String) {
+        alert(title: "Error", message: message)
     }
     
     func alert(title: String, message: String) {
@@ -38,7 +38,7 @@ class BaseViewController: ViewController {
         
         let action = UIAlertAction(title: "OK", style: .default, handler: nil)
         alertController.addAction(action)
-        alertController.present(animated: true, completion: nil)
+        self.present(alertController, animated: true, completion: nil)
     }
     
     var statusBarStyle: UIStatusBarStyle = .lightContent {

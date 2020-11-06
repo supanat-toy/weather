@@ -9,7 +9,7 @@ import Foundation
 
 protocol WeatherPresentationLogic {
     func getWeatherOnComplete(response: WeatherModel.GetWeather.Response, weatherUnit: WeatherUnit)
-    func getWeatherOnError(error: Error)
+    func getWeatherOnError(error: NetworkError)
 }
 
 class WeatherPresenter: WeatherPresentationLogic {
@@ -31,7 +31,8 @@ class WeatherPresenter: WeatherPresentationLogic {
         viewController?.getCurrentWeatherOnComplete(viewModel: weatherViewModel)
     }
     
-    func getWeatherOnError(error: Error) {
-        viewController?.getCurrentWeatherOnError(errorMessage: error.localizedDescription)
+    func getWeatherOnError(error: NetworkError) {
+        let errorMessage = "Error code: \(error.code ?? "")\nmessage: \(error.message ?? "")"
+        viewController?.getCurrentWeatherOnError(errorMessage: errorMessage)
     }
 }

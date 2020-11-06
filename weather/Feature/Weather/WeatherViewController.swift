@@ -66,23 +66,17 @@ class WeatherViewController: BaseViewController, WeatherDisplayLogic {
         super.viewDidLoad()
         
         cityTextField.text = "Sukhumvit, TH"
+        setupView()
         getCurrentWeather()
     }
     
     func setupView() {
         containerTopView.layer.masksToBounds = false
-        containerTopView.layer.shadowColor = UIColor.white.cgColor
+        containerTopView.layer.shadowColor = UIColor.lightGray.cgColor
         containerTopView.layer.shadowOpacity = 0.5
         containerTopView.layer.shadowOffset = .zero
         containerTopView.layer.shadowRadius = 5
         containerTopView.layer.cornerRadius = 5
-        
-        containerBelowView.layer.masksToBounds = false
-        containerBelowView.layer.shadowColor = UIColor.darkGray.cgColor
-        containerBelowView.layer.shadowOpacity = 0.5
-        containerBelowView.layer.shadowOffset = .zero
-        containerBelowView.layer.shadowRadius = 5
-        containerBelowView.layer.cornerRadius = 5
     }
     
     @IBAction func searchOnClick(_ sender: UIButton) {
@@ -123,7 +117,7 @@ class WeatherViewController: BaseViewController, WeatherDisplayLogic {
     
     func getCurrentWeatherOnError(errorMessage: String) {
         dismissLoadingView {
-            self.alertError(code: nil, message: errorMessage)
+            self.alertError(message: errorMessage)
         }
     }
 }
