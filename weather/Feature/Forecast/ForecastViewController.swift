@@ -49,9 +49,9 @@ class ForecastViewController: BaseViewController, ForecastDisplayLogic {
     }
     
     func setupData() {
-        if let cityName = weatherDataStore?.cityName {
+        if let cityName = weatherDataStore?.cityName, !cityName.isEmpty, let weatherUnit = weatherDataStore?.weatherUnit {
             showLoadingView()
-            interactor?.getForecast5Days(cityName: cityName, weatherUnit: weatherDataStore?.weatherUnit ?? .celsius)
+            interactor?.getForecast5Days(cityName: cityName, weatherUnit: weatherUnit)
         }
     }
     
