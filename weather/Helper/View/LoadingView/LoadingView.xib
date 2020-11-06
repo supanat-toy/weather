@@ -27,7 +27,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hXq-C9-5kY">
                             <rect key="frame" x="93.5" y="39.5" width="150" height="120.5"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gZN-Nd-bxR" customClass="AppLabel" customModule="AomWise" customModuleProvider="target">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gZN-Nd-bxR" customClass="AppLabel" customModule="weather" customModuleProvider="target">
                                     <rect key="frame" x="28.5" y="73" width="93" height="27.5"/>
                                     <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                     <nil key="textColor"/>
@@ -48,7 +48,7 @@
                                     <color key="color" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </activityIndicatorView>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" white="1" alpha="0.90294894366197187" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="4Ci-9e-mbh" firstAttribute="top" secondItem="hXq-C9-5kY" secondAttribute="top" constant="25" id="0cQ-AO-QTq"/>
                                 <constraint firstAttribute="bottom" secondItem="gZN-Nd-bxR" secondAttribute="bottom" constant="20" id="3Ei-pp-OiV"/>

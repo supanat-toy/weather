@@ -76,6 +76,13 @@ class WeatherViewController: BaseViewController, WeatherDisplayLogic {
         containerTopView.layer.shadowOffset = .zero
         containerTopView.layer.shadowRadius = 5
         containerTopView.layer.cornerRadius = 5
+        
+        containerBelowView.layer.masksToBounds = false
+        containerBelowView.layer.shadowColor = UIColor.darkGray.cgColor
+        containerBelowView.layer.shadowOpacity = 0.5
+        containerBelowView.layer.shadowOffset = .zero
+        containerBelowView.layer.shadowRadius = 5
+        containerBelowView.layer.cornerRadius = 5
     }
     
     @IBAction func searchOnClick(_ sender: UIButton) {

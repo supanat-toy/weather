@@ -26,7 +26,7 @@ class WeatherPresenter: WeatherPresentationLogic {
             humidity: DataHelper.shared.formattNumberDecimal(number: response.main?.humidity, point: 0) + "%",
             temp: (DataHelper.shared.formattNumberDecimal(number: response.main?.temp, point: 0)) + "°" + unit ,
             cloud: DataHelper.shared.formattNumberDecimal(number: response.clouds?.all, point: 0) + "%",
-            weathericonURL: "http://openweathermap.org/img/wn/\(response.weather?.first?.icon ?? "")@2x.png"
+            weathericonURL: "http://openweathermap.org/img/wn/\(response.weather?.first?.icon ?? "")@4x.png"
         )
         viewController?.getCurrentWeatherOnComplete(viewModel: weatherViewModel)
     }
