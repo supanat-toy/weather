@@ -49,9 +49,6 @@ extension ForecastViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-//        if section < forecastByDates.count {
-//            return UITableView.automaticDimension
-//        }
         return 0.01
     }
     

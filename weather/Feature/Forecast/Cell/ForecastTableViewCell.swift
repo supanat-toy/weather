@@ -27,17 +27,6 @@ class ForecastTableViewCell: UITableViewCell {
         
         self.selectionStyle = .none
         self.backgroundColor = .white
-//
-//        shadowView.layer.masksToBounds = false
-//        shadowView.layer.shadowColor = AppColor.boxShadow.cgColor
-//        shadowView.layer.shadowOpacity = 0.5
-//        shadowView.layer.shadowOffset = .zero
-//        shadowView.layer.shadowRadius = 5
-//        shadowView.layer.cornerRadius = 5
-//
-//        containerView.layer.cornerRadius = 5
-//
-//        accountWarningBadgeView.isHidden = true
     }
     
     override func prepareForReuse() {

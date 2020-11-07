@@ -6,7 +6,6 @@
 //
 
 import Moya
-import Result
 import RxSwift
 
 protocol WeatherWorkerProtocol {

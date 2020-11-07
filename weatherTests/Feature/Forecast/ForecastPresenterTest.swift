@@ -20,7 +20,7 @@ class ForecastPresenterTest: XCTestCase {
         self.presenter = ForecastPresenter(viewController: viewController)
     }
     
-    func testGetForecast5DaysOnSuccess() {
+    func testGetForecast5DaysOnSuccessWithCelsius() {
         let response = WeatherModel.GetForecast5Days.Response(
             list: [
                 WeatherModel.GetForecast5Days.Response.Forecast(
@@ -72,6 +72,73 @@ class ForecastPresenterTest: XCTestCase {
             ])
         
         presenter.getForecast5DaysOnComplete(response: response, weatherUnit: .celsius)
+        
+        XCTAssertTrue(viewController.isCalledGetForecast5DaysOnComplete)
+        XCTAssertFalse(viewController.isCalledGetForecast5DaysOnError)
+        XCTAssertNil(viewController.errorMessage)
+        
+//        XCTAssertEqual("70%", viewController.viewModel?.cloud)
+//        XCTAssertEqual("40%", viewController.viewModel?.humidity)
+//        XCTAssertEqual("12 hPa", viewController.viewModel?.pressure)
+//        XCTAssertEqual("38°F", viewController.viewModel?.temp)
+//        XCTAssertEqual("clear cloud", viewController.viewModel?.weatherDescriotion)
+//        XCTAssertEqual("http://openweathermap.org/img/wn/10d@4x.png", viewController.viewModel?.weathericonURL)
+//        XCTAssertEqual("24.43 m/s NE", viewController.viewModel?.windSpeed)
+        // TODO: 123 test
+    }
+    
+    func testGetForecast5DaysOnSuccessWithFahrenheit() {
+        let response = WeatherModel.GetForecast5Days.Response(
+            list: [
+                WeatherModel.GetForecast5Days.Response.Forecast(
+                    dt: 104323312,
+                    main: WeatherModel.GetForecast5Days.Response.Forecast.Main(
+                        temp: 37.23,
+                        temp_min: 37.02,
+                        temp_max: 39.43,
+                        pressure: 124,
+                        humidity: 300,
+                        sea_level: 2.4,
+                        grnd_level: 12.34,
+                        temp_kf: 38.33
+                    ),
+                    weather: [WeatherModel.GetForecast5Days.Response.Forecast.Weather(
+                                main: "Rain",
+                                description: "heavy rain",
+                                icon: "11d")
+                    ],
+                    wind: WeatherModel.GetForecast5Days.Response.Forecast.Wind(
+                        speed: 214,
+                        deg: 104
+                    ),
+                    clouds: WeatherModel.GetForecast5Days.Response.Forecast.Cloud(all: 80)
+                ),
+                WeatherModel.GetForecast5Days.Response.Forecast(
+                    dt: 104324342,
+                    main: WeatherModel.GetForecast5Days.Response.Forecast.Main(
+                        temp: 37.23,
+                        temp_min: 37.19,
+                        temp_max: 38.54,
+                        pressure: 230,
+                        humidity: 350,
+                        sea_level: 120,
+                        grnd_level: 214,
+                        temp_kf: 38.23
+                    ),
+                    weather: [WeatherModel.GetForecast5Days.Response.Forecast.Weather(
+                                main: "Cloud",
+                                description: "Clear cloud",
+                                icon: "02n")
+                    ],
+                    wind: WeatherModel.GetForecast5Days.Response.Forecast.Wind(
+                        speed: 1234,
+                        deg: 21
+                    ),
+                    clouds: WeatherModel.GetForecast5Days.Response.Forecast.Cloud(all: 55)
+                )
+            ])
+        
+        presenter.getForecast5DaysOnComplete(response: response, weatherUnit: .fahrenheit)
         
         XCTAssertTrue(viewController.isCalledGetForecast5DaysOnComplete)
         XCTAssertFalse(viewController.isCalledGetForecast5DaysOnError)

@@ -9,7 +9,7 @@ import UIKit
 
 class BaseViewController: ViewController {
     
-    let alertLoadingView = UINib(nibName: LoadingView.identifier, bundle: .main).instantiate(withOwner: nil, options: nil).first as? LoadingView
+    var alertLoadingView = UINib(nibName: LoadingView.identifier, bundle: .main).instantiate(withOwner: nil, options: nil).first as? LoadingView
     
     func showLoadingView() {
         if let view = alertLoadingView {

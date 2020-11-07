@@ -88,7 +88,7 @@ class WeatherViewController: BaseViewController, WeatherDisplayLogic {
         getCurrentWeather()
     }
     
-    @IBAction func changeWeatherUnit(_ sender: UIButton) {
+    @IBAction func changeWeatherUnitOnClick(_ sender: UIButton) {
         weatherUnit = weatherUnit == .celsius ? .fahrenheit : .celsius
         getCurrentWeather()
     }

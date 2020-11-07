@@ -28,7 +28,7 @@ struct NetworkError: Swift.Error, Equatable, Codable {
                 self = NetworkError(code: nil, message: "Connection error", httpStatusCode: 0)
             }
         } else {
-            self = error as? NetworkError ?? NetworkError(code: "", message: error.localizedDescription, httpStatusCode: 0)
+            self = error as? NetworkError ?? NetworkError(code: nil, message: error.localizedDescription, httpStatusCode: 0)
         }
     }
     
@@ -40,12 +40,12 @@ struct NetworkError: Swift.Error, Equatable, Codable {
     
     init(response: Response?) {
         if let response = response {
-            self.httpStatusCode = response.statusCode
             if let json = try? JSONSerialization.jsonObject(with: response.data, options: []) as? [String: Any] {
-                self.code = json["cod"] as? String ?? ""
-                self.message = json["message"] as? String ?? ""
+                self = NetworkError(code: json["cod"] as? String,
+                                    message: json["message"] as? String,
+                                    httpStatusCode: response.statusCode)
             } else {
-                self = NetworkError(code: "", message: response.description, httpStatusCode: response.statusCode)
+                self = NetworkError(code: nil, message: response.description, httpStatusCode: response.statusCode)
             }
         }
     }

@@ -42,13 +42,3 @@ extension UIImageView {
         downloaded(from: url, contentMode: mode)
     }
 }
-
-//
-//extension Optional where Wrapped == Double {
-//    func formattedDecimal(point: Int) -> String {
-//        guard let value = self else {
-//            return ""
-//        }
-//        return String(format: "%.\(point)f", value)
-//    }
-//}

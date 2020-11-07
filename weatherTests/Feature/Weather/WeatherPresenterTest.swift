@@ -20,7 +20,50 @@ class WeatherPresenterTest: XCTestCase {
         self.presenter = WeatherPresenter(viewController: viewController)
     }
     
-    func testGetCurrentWeatherOnSuccess() {
+    func testGetCurrentWeatherOnSuccessWithCelsius() {
+        let response = WeatherModel.GetWeather.Response(
+            timezone: 10324453,
+            name: "Bangkok",
+            weather: [WeatherModel.GetWeather.Response.Weather(
+                        main: "cloud",
+                        description: "clear cloud",
+                        icon: "10d")
+            ],
+            main: WeatherModel.GetWeather.Response.Main(
+                temp: 38.21,
+                feels_like: 38.43,
+                temp_min: 38.18,
+                temp_max: 40.45,
+                pressure: 12.4,
+                humidity: 40
+            ),
+            wind: WeatherModel.GetWeather.Response.Wind(
+                speed: 24.43,
+                deg: 140
+            ),
+            clouds: WeatherModel.GetWeather.Response.Cloud(all: 70),
+            sys: WeatherModel.GetWeather.Response.Sys(
+                country: "TH",
+                sunrise: 10324233,
+                sunset: 10231232
+            )
+        )
+        presenter.getWeatherOnComplete(response: response, weatherUnit: .celsius)
+        
+        XCTAssertTrue(viewController.isCalledGetCurrentWeatherOnComplete)
+        XCTAssertFalse(viewController.isCalledGetCurrentWeatherOnError)
+        XCTAssertNil(viewController.errorMessage)
+        
+        XCTAssertEqual("70%", viewController.viewModel?.cloud)
+        XCTAssertEqual("40%", viewController.viewModel?.humidity)
+        XCTAssertEqual("12 hPa", viewController.viewModel?.pressure)
+        XCTAssertEqual("38°C", viewController.viewModel?.temp)
+        XCTAssertEqual("clear cloud", viewController.viewModel?.weatherDescriotion)
+        XCTAssertEqual("http://openweathermap.org/img/wn/10d@4x.png", viewController.viewModel?.weathericonURL)
+        XCTAssertEqual("24.43 m/s NE", viewController.viewModel?.windSpeed)
+    }
+    
+    func testGetCurrentWeatherOnSuccessWithFahrenheit() {
         let response = WeatherModel.GetWeather.Response(
             timezone: 10324453,
             name: "Bangkok",

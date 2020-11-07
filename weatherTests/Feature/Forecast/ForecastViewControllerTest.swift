@@ -78,6 +78,24 @@ class ForecastViewControllerTest: XCTestCase {
         XCTAssertFalse(mockInteractor.isCalledGetForecast5Days)
     }
     
+    func testRegisterTableViewCell() {
+        viewController.registerTableViewCell()
+        
+        let forecastTableViewCell = viewController.tableView.dequeueReusableCell(withIdentifier: ForecastTableViewCell.identifier)
+        
+        let forecastTableViewHeaderCell = viewController.tableView.dequeueReusableHeaderFooterView(withIdentifier: ForecastTableViewHeaderCell.identifier)
+        
+        XCTAssertNotNil(forecastTableViewCell)
+        XCTAssertTrue(forecastTableViewCell is ForecastTableViewCell)
+        
+        XCTAssertNotNil(forecastTableViewHeaderCell)
+        XCTAssertTrue(forecastTableViewHeaderCell is ForecastTableViewHeaderCell)
+    }
+    
+    func testA() {
+        
+    }
+    
     func loadView() {
         _ = viewController.view
     }
