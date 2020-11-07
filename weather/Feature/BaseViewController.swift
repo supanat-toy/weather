@@ -50,4 +50,18 @@ class BaseViewController: ViewController {
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return statusBarStyle
     }
+    
+    func setTapGestureKeyboard(tapView: UIView) {
+        let tapRecognizer = UITapGestureRecognizer()
+        tapRecognizer.addTarget(self, action: #selector(tap))
+        tapView.addGestureRecognizer(tapRecognizer)
+    }
+    
+    @objc func tap(gesture: UITapGestureRecognizer) {
+        hideKeyboard()
+    }
+    
+    func hideKeyboard() {
+        self.view.endEditing(true)
+    }
 }

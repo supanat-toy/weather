@@ -43,9 +43,14 @@ class ForecastViewController: BaseViewController, ForecastDisplayLogic {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupAccessibilityIdentifier()
         registerTableViewCell()
         setupView()
         setupData()
+    }
+    
+    func setupAccessibilityIdentifier() {
+        tableView.accessibilityIdentifier = "forecast_tableview"
     }
     
     func setupData() {

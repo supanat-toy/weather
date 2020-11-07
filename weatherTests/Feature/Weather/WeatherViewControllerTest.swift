@@ -78,7 +78,6 @@ class WeatherViewControllerTest: XCTestCase {
         XCTAssertTrue(mockInteractor.isCalledGetCurrentWeather)
     }
     
-    
     func loadView() {
         _ = viewController.view
     }

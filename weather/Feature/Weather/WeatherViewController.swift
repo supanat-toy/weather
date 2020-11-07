@@ -74,6 +74,7 @@ class WeatherViewController: BaseViewController, WeatherDisplayLogic {
     }
     
     func setupView() {
+        setTapGestureKeyboard(tapView: self.view)
         containerTopView.layer.masksToBounds = false
         containerTopView.layer.shadowColor = UIColor.lightGray.cgColor
         containerTopView.layer.shadowOpacity = 0.5
@@ -85,10 +86,12 @@ class WeatherViewController: BaseViewController, WeatherDisplayLogic {
     }
     
     @IBAction func searchOnClick(_ sender: UIButton) {
+        hideKeyboard()
         getCurrentWeather()
     }
     
     @IBAction func changeWeatherUnitOnClick(_ sender: UIButton) {
+        hideKeyboard()
         weatherUnit = weatherUnit == .celsius ? .fahrenheit : .celsius
         getCurrentWeather()
     }
@@ -103,6 +106,7 @@ class WeatherViewController: BaseViewController, WeatherDisplayLogic {
     }
     
     @IBAction func forecastOnClick(_ sender: UIBarButtonItem) {
+        hideKeyboard()
         router?.navigateToForecastSegue()
     }
     
