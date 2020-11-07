@@ -92,8 +92,49 @@ class ForecastViewControllerTest: XCTestCase {
         XCTAssertTrue(forecastTableViewHeaderCell is ForecastTableViewHeaderCell)
     }
     
-    func testA() {
+    func testTableViewWithZeroSectionAndZeroRows() {
+        viewController.forecastByDates = []
+        viewController.tableView.reloadData()
         
+        XCTAssertEqual(0, viewController.tableView.numberOfSections)
+    }
+    
+    func testTableViewWithTwoSectionsAndRows() {
+        viewController.forecastByDates = [
+            ForecastViewModel.Forecast5Days.Forecast(
+                date: "Tuesday, December 29",
+                values: [
+                    ForecastViewModel.Forecast5Days.Forecast.Value(
+                            time: "14:00",
+                            tempMaxMin: "27/25°C",
+                            weathericonURL: "http://openweathermap.org/img/wn/10d@4x.png",
+                            weatherDescription: "hevry rain"
+                    ),
+                    ForecastViewModel.Forecast5Days.Forecast.Value(
+                            time: "17:00",
+                            tempMaxMin: "28/22°C",
+                            weathericonURL: "http://openweathermap.org/img/wn/6d@4x.png",
+                            weatherDescription: "clear sun"
+                    )
+                ]
+            ),
+            ForecastViewModel.Forecast5Days.Forecast(
+                date: "Wednesday, December 30",
+                values: [
+                    ForecastViewModel.Forecast5Days.Forecast.Value(
+                            time: "09:00",
+                            tempMaxMin: "35/34°C",
+                            weathericonURL: "http://openweathermap.org/img/wn/2d@4x.png",
+                            weatherDescription: "rain"
+                    )
+                ]
+            )
+        ]
+        viewController.tableView.reloadData()
+        
+        XCTAssertEqual(2, viewController.tableView.numberOfSections)
+        XCTAssertEqual(2, viewController.tableView.numberOfRows(inSection: 0))
+        XCTAssertEqual(1, viewController.tableView.numberOfRows(inSection: 1))
     }
     
     func loadView() {
