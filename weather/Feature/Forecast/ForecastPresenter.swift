@@ -60,7 +60,7 @@ class ForecastPresenter: ForecastPresentationLogic {
     }
     
     func getForecast5DaysOnError(error: NetworkError) {
-        let errorMessage = "Error code: \(error.code ?? "")\nmessage: \(error.message ?? "")"
+        let errorMessage = "Error code: \(error.code ?? "")\nMessage: \(error.message ?? "")"
         viewController?.getForecast5DaysOnError(errorMessage: errorMessage)
     }
 }

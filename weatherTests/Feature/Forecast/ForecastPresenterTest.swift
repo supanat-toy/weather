@@ -160,7 +160,7 @@ class ForecastPresenterTest: XCTestCase {
         XCTAssertFalse(viewController.isCalledGetForecast5DaysOnComplete)
         XCTAssertTrue(viewController.isCalledGetForecast5DaysOnError)
         
-        XCTAssertEqual("Error code: 450\nmessage: what happen in here?", viewController.errorMessage)
+        XCTAssertEqual("Error code: 450\nMessage: what happen in here?", viewController.errorMessage)
     }
 }
 

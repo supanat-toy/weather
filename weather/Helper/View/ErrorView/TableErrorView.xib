@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" restorationIdentifier="TableErrorView" id="Tey-dk-ZxE" customClass="TableErrorView" customModule="weather" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="298" height="339"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1ga-Un-yzC">
+                    <rect key="frame" x="0.0" y="0.0" width="298" height="339"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ehS-zt-KoG">
+                            <rect key="frame" x="0.0" y="0.0" width="298" height="339"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty-box" translatesAutoresizingMaskIntoConstraints="NO" id="o2j-Ka-g5Z">
+                                    <rect key="frame" x="100" y="80" width="98" height="98"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="o2j-Ka-g5Z" secondAttribute="height" multiplier="1:1" id="fLR-Fi-Xcr"/>
+                                    </constraints>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VWp-2j-A4K">
+                                    <rect key="frame" x="110" y="236" width="78.5" height="20.5"/>
+                                    <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="15"/>
+                                    <color key="textColor" red="0.43529412150000002" green="0.4431372583" blue="0.47450980539999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No results found" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ik-DC-ukh">
+                                    <rect key="frame" x="79" y="203" width="140.5" height="25"/>
+                                    <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="18"/>
+                                    <color key="textColor" red="0.18039215689999999" green="0.1960784314" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="o2j-Ka-g5Z" firstAttribute="leading" secondItem="ehS-zt-KoG" secondAttribute="leading" constant="100" id="Jro-AO-Us2"/>
+                                <constraint firstAttribute="trailing" secondItem="o2j-Ka-g5Z" secondAttribute="trailing" constant="100" id="KgI-H8-Ssd"/>
+                                <constraint firstItem="5ik-DC-ukh" firstAttribute="centerX" secondItem="o2j-Ka-g5Z" secondAttribute="centerX" id="TAI-NS-aLE"/>
+                                <constraint firstItem="VWp-2j-A4K" firstAttribute="centerX" secondItem="5ik-DC-ukh" secondAttribute="centerX" id="Yoe-jk-sSG"/>
+                                <constraint firstItem="5ik-DC-ukh" firstAttribute="top" secondItem="o2j-Ka-g5Z" secondAttribute="bottom" constant="25" id="b63-9C-Cnc"/>
+                                <constraint firstItem="o2j-Ka-g5Z" firstAttribute="top" secondItem="ehS-zt-KoG" secondAttribute="top" constant="80" id="kcs-EB-JCL"/>
+                                <constraint firstItem="VWp-2j-A4K" firstAttribute="top" secondItem="5ik-DC-ukh" secondAttribute="bottom" constant="8" id="tdU-3I-8CQ"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" red="0.97254901960784312" green="0.96862745098039216" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="ehS-zt-KoG" secondAttribute="bottom" id="DA3-IK-ryO"/>
+                        <constraint firstAttribute="trailing" secondItem="ehS-zt-KoG" secondAttribute="trailing" id="Dp8-ec-evk"/>
+                        <constraint firstItem="ehS-zt-KoG" firstAttribute="leading" secondItem="1ga-Un-yzC" secondAttribute="leading" id="Q5n-xK-ZgF"/>
+                        <constraint firstItem="ehS-zt-KoG" firstAttribute="top" secondItem="1ga-Un-yzC" secondAttribute="top" id="QBT-eq-fI1"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="B7O-Oz-RPs"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="1ga-Un-yzC" firstAttribute="leading" secondItem="B7O-Oz-RPs" secondAttribute="leading" id="BwP-Pe-1BQ"/>
+                <constraint firstItem="B7O-Oz-RPs" firstAttribute="trailing" secondItem="1ga-Un-yzC" secondAttribute="trailing" id="Df7-nx-MLu"/>
+                <constraint firstAttribute="bottom" secondItem="1ga-Un-yzC" secondAttribute="bottom" id="cNF-t5-RhT"/>
+                <constraint firstItem="1ga-Un-yzC" firstAttribute="top" secondItem="Tey-dk-ZxE" secondAttribute="top" id="mXa-65-ZdO"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="containerView" destination="ehS-zt-KoG" id="BT8-IZ-zWy"/>
+                <outlet property="imageView" destination="o2j-Ka-g5Z" id="Ncd-Th-Ti7"/>
+                <outlet property="subTitleLabel" destination="VWp-2j-A4K" id="glv-ZK-SbP"/>
+                <outlet property="titleLabel" destination="5ik-DC-ukh" id="GHX-iT-02m"/>
+            </connections>
+            <point key="canvasLocation" x="-555.07246376811599" y="-241.40625"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="empty-box" width="370" height="371"/>
+    </resources>
+</document>

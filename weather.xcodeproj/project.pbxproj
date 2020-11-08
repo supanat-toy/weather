@@ -49,6 +49,8 @@
 		845EB2902550710E008DA208 /* WeatherWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845EB28F2550710E008DA208 /* WeatherWorker.swift */; };
 		845EB2952550711B008DA208 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845EB2942550711B008DA208 /* WeatherModel.swift */; };
 		8462A602255462AF005074FD /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8462A601255462AF005074FD /* LoadingView.xib */; };
+		846D1F1F2557FCC200280F75 /* TableErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 846D1F1D2557FCC200280F75 /* TableErrorView.xib */; };
+		846D1F202557FCC200280F75 /* TableErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846D1F1E2557FCC200280F75 /* TableErrorView.swift */; };
 		84BCA3E22555CC82000A56DB /* ForecastTableViewHeaderCellTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BCA3E12555CC82000A56DB /* ForecastTableViewHeaderCellTest.swift */; };
 		84BCA3EA2555CC8D000A56DB /* ForecastTableViewCellTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BCA3E92555CC8D000A56DB /* ForecastTableViewCellTest.swift */; };
 		84D4C82F25563F4300755D0B /* DataHelperTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D4C82E25563F4300755D0B /* DataHelperTest.swift */; };
@@ -131,6 +133,8 @@
 		845EB28F2550710E008DA208 /* WeatherWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherWorker.swift; sourceTree = "<group>"; };
 		845EB2942550711B008DA208 /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
 		8462A601255462AF005074FD /* LoadingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
+		846D1F1D2557FCC200280F75 /* TableErrorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableErrorView.xib; sourceTree = "<group>"; };
+		846D1F1E2557FCC200280F75 /* TableErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableErrorView.swift; sourceTree = "<group>"; };
 		84BCA3E12555CC82000A56DB /* ForecastTableViewHeaderCellTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastTableViewHeaderCellTest.swift; sourceTree = "<group>"; };
 		84BCA3E92555CC8D000A56DB /* ForecastTableViewCellTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastTableViewCellTest.swift; sourceTree = "<group>"; };
 		84D4C82E25563F4300755D0B /* DataHelperTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHelperTest.swift; sourceTree = "<group>"; };
@@ -227,6 +231,7 @@
 		8440B80E2554604400C10BDD /* View */ = {
 			isa = PBXGroup;
 			children = (
+				846D1F1C2557FCAE00280F75 /* ErrorView */,
 				8440B81A2554605500C10BDD /* LoadingView */,
 			);
 			path = View;
@@ -380,6 +385,15 @@
 			path = Worker;
 			sourceTree = "<group>";
 		};
+		846D1F1C2557FCAE00280F75 /* ErrorView */ = {
+			isa = PBXGroup;
+			children = (
+				846D1F1E2557FCC200280F75 /* TableErrorView.swift */,
+				846D1F1D2557FCC200280F75 /* TableErrorView.xib */,
+			);
+			path = ErrorView;
+			sourceTree = "<group>";
+		};
 		84BCA3E02555CC78000A56DB /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -520,6 +534,7 @@
 				845EB23925506BC3008DA208 /* LaunchScreen.storyboard in Resources */,
 				842D6341255305F90090FB24 /* ForecastTableViewHeaderCell.xib in Resources */,
 				8462A602255462AF005074FD /* LoadingView.xib in Resources */,
+				846D1F1F2557FCC200280F75 /* TableErrorView.xib in Resources */,
 				845EB23625506BC3008DA208 /* Assets.xcassets in Resources */,
 				845EB23425506BC2008DA208 /* Main.storyboard in Resources */,
 			);
@@ -662,6 +677,7 @@
 				845EB26E25506FCB008DA208 /* WeatherViewController.swift in Sources */,
 				84432A992551A41D00AFEFBA /* ForecastRouter.swift in Sources */,
 				84432A8725519AFE00AFEFBA /* BaseViewController.swift in Sources */,
+				846D1F202557FCC200280F75 /* TableErrorView.swift in Sources */,
 				84432AB52551B98900AFEFBA /* Extension.swift in Sources */,
 				84432A9D2551A41D00AFEFBA /* ForecastViewModel.swift in Sources */,
 				845EB27625506FDC008DA208 /* WeatherInteractor.swift in Sources */,

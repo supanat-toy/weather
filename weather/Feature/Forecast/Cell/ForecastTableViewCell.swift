@@ -38,10 +38,13 @@ class ForecastTableViewCell: UITableViewCell {
         descriptionLabel.text = ""
     }
     
-    func setCell(viewModel: ForecastViewModel.Forecast5Days.Forecast.Value) {
-        timeLabel.text = viewModel.time
-        tempLabel.text = viewModel.tempMaxMin
-        weatherImageView.downloaded(from: viewModel.weathericonURL)
-        descriptionLabel.text = viewModel.weatherDescription
+    func setCell(viewModel: ForecastViewModel.Forecast5Days.Forecast.Value?) {
+        timeLabel.text = viewModel?.time ?? "N/A"
+        tempLabel.text = viewModel?.tempMaxMin ?? "N/A"
+        
+        if let weathericonURL = viewModel?.weathericonURL {
+            weatherImageView.downloaded(from: weathericonURL)
+        }
+        descriptionLabel.text = viewModel?.weatherDescription ?? "N/A"
     }
 }

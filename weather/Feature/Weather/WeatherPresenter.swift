@@ -36,7 +36,7 @@ class WeatherPresenter: WeatherPresentationLogic {
     }
     
     func getWeatherOnError(error: NetworkError) {
-        let errorMessage = "Error code: \(error.code ?? "")\nmessage: \(error.message ?? "")"
+        let errorMessage = "Error code: \(error.code ?? "")\nMessage: \(error.message ?? "")"
         viewController?.getCurrentWeatherOnError(errorMessage: errorMessage)
     }
 }

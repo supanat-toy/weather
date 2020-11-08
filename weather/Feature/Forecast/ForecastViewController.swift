@@ -26,7 +26,9 @@ class ForecastViewController: BaseViewController, ForecastDisplayLogic {
     
     // MARK: Data
     var weatherDataStore: WeatherDataStore?
-    var forecastByDates = [ForecastViewModel.Forecast5Days.Forecast]()
+    var forecastByDates: [ForecastViewModel.Forecast5Days.Forecast]?
+    let tableErrorView = Bundle.main.loadNibNamed("TableErrorView", owner: self, options: nil)?.first as? TableErrorView
+    var canShowErrorView = false
     
     // MARK: Object lifecycle
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -62,8 +64,8 @@ class ForecastViewController: BaseViewController, ForecastDisplayLogic {
     
     func setupView() {
         self.title = weatherDataStore?.cityName
-        temperatureLabel.text = weatherDataStore?.temperature
-        weatherDescriptionLabel.text = weatherDataStore?.weatherDescription
+        temperatureLabel.text = weatherDataStore?.temperature ?? "N/A"
+        weatherDescriptionLabel.text = weatherDataStore?.weatherDescription ?? "N/A"
         if let weatherImageURL = weatherDataStore?.weatherImageURL {
             weatherImageView.downloaded(from: weatherImageURL)
         }
@@ -80,14 +82,15 @@ class ForecastViewController: BaseViewController, ForecastDisplayLogic {
 
     func getForecast5DaysOnComplete(viewModel: ForecastViewModel.Forecast5Days) {
         dismissLoadingView {
-            self.forecastByDates = viewModel.forecastByDates ?? []
-            self.tableView.reloadData()
+            self.forecastByDates = viewModel.forecastByDates
+            self.setupTableView()
         }
         
     }
     
     func getForecast5DaysOnError(errorMessage: String) {
         dismissLoadingView {
+            self.setupTableView()
             self.alertError(message: errorMessage)
         }
     }

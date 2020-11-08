@@ -98,10 +98,14 @@ class WeatherViewController: BaseViewController, WeatherDisplayLogic {
     
     func getCurrentWeather() {
         weatherUnitButton.setTitle(weatherUnit.title, for: .normal)
-        if let cityName = cityTextField.text, !cityName.isEmpty {
-            self.weatherDataStore?.cityName = cityName
-            self.showLoadingView()
-            interactor?.getCurrentWeather(cityName: cityName, weatherUnit: weatherUnit)
+        if let cityName = cityTextField.text {
+            if cityName.isEmpty {
+                self.alertError(message: "City name is empty")
+            } else {
+                self.weatherDataStore?.cityName = cityName
+                self.showLoadingView()
+                interactor?.getCurrentWeather(cityName: cityName, weatherUnit: weatherUnit)
+            }
         }
     }
     
@@ -112,22 +116,32 @@ class WeatherViewController: BaseViewController, WeatherDisplayLogic {
     
     func getCurrentWeatherOnComplete(viewModel: WeatherViewModel.Weather) {
         dismissLoadingView {
-            self.temperatureLabel.text = viewModel.temp
-            self.humidityLabel.text = viewModel.humidity
-            self.pressureLabel.text = viewModel.pressure
-            self.cloudLabel.text = viewModel.cloud
-            self.windSpeedLabel.text = viewModel.windSpeed
-            self.weatherDescriptionLabel.text = viewModel.weatherDescriotion
-            self.weatherImageView.downloaded(from: viewModel.weathericonURL)
-            
-            self.weatherDataStore?.temperature = viewModel.temp
-            self.weatherDataStore?.weatherImageURL = viewModel.weathericonURL
-            self.weatherDataStore?.weatherDescription = viewModel.weatherDescriotion
+            self.setDataValue(viewModel: viewModel)
         }
+    }
+    
+    func setDataValue(viewModel: WeatherViewModel.Weather?) {
+        self.temperatureLabel.text = viewModel?.temp ?? "N/A"
+        self.humidityLabel.text = viewModel?.humidity ?? "N/A"
+        self.pressureLabel.text = viewModel?.pressure ?? "N/A"
+        self.cloudLabel.text = viewModel?.cloud ?? "N/A"
+        self.windSpeedLabel.text = viewModel?.windSpeed ?? "N/A"
+        self.weatherDescriptionLabel.text = viewModel?.weatherDescriotion ?? "N/A"
+        
+        if let weathericonURL = viewModel?.weathericonURL {
+            self.weatherImageView.downloaded(from: weathericonURL)
+        } else {
+            self.weatherImageView.image = UIImage()
+        }
+        
+        self.weatherDataStore?.temperature = viewModel?.temp
+        self.weatherDataStore?.weatherImageURL = viewModel?.weathericonURL
+        self.weatherDataStore?.weatherDescription = viewModel?.weatherDescriotion
     }
     
     func getCurrentWeatherOnError(errorMessage: String) {
         dismissLoadingView {
+            self.setDataValue(viewModel: nil)
             self.alertError(message: errorMessage)
         }
     }

@@ -113,7 +113,7 @@ class WeatherPresenterTest: XCTestCase {
         XCTAssertFalse(viewController.isCalledGetCurrentWeatherOnComplete)
         XCTAssertTrue(viewController.isCalledGetCurrentWeatherOnError)
         
-        XCTAssertEqual("Error code: 511\nmessage: something is wrong?", viewController.errorMessage)
+        XCTAssertEqual("Error code: 511\nMessage: something is wrong?", viewController.errorMessage)
     }
 }
 
