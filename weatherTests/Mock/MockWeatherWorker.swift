@@ -14,7 +14,7 @@ class MockWeatherWorkerSuccess: WeatherWorkerProtocol {
         return Observable.create { (observable) -> Disposable in
             observable.onNext(
                 WeatherModel.GetWeather.Response(
-                    timezone: 10324453,
+                    dt: 10324453,
                     name: "Bangkok",
                     weather: [WeatherModel.GetWeather.Response.Weather(
                                 main: "cloud",

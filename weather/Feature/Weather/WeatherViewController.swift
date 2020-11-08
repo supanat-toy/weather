@@ -36,6 +36,7 @@ class WeatherViewController: BaseViewController, WeatherDisplayLogic {
     @IBOutlet var containerTopView: UIView!
     
     @IBOutlet var weatherDescriptionLabel: UILabel!
+    @IBOutlet var timezoneLabel: UILabel!
     @IBOutlet var temperatureLabel: UILabel!
     @IBOutlet var humidityLabel: UILabel!
     @IBOutlet var windSpeedLabel: UILabel!
@@ -46,7 +47,6 @@ class WeatherViewController: BaseViewController, WeatherDisplayLogic {
     @IBOutlet var weatherUnitButton: UIButton!
     
     // MARK: Data
-    var weatherUnit: WeatherUnit = .celsius
     var weatherDataStore: WeatherDataStore?
     
     // MARK: Object lifecycle
@@ -70,7 +70,7 @@ class WeatherViewController: BaseViewController, WeatherDisplayLogic {
     }
     
     func setupData() {
-        weatherDataStore = WeatherDataStore(weatherUnit: weatherUnit)
+        weatherDataStore = WeatherDataStore(weatherUnit: .celsius)
     }
     
     func setupView() {
@@ -85,26 +85,32 @@ class WeatherViewController: BaseViewController, WeatherDisplayLogic {
     
     @IBAction func changeWeatherUnitOnClick(_ sender: UIButton) {
         hideKeyboard()
+        var weatherUnit = weatherDataStore?.weatherUnit ?? .celsius
         weatherUnit = weatherUnit == .celsius ? .fahrenheit : .celsius
+        weatherDataStore?.weatherUnit = weatherUnit
         getCurrentWeather()
     }
     
     func getCurrentWeather() {
-        weatherUnitButton.setTitle(weatherUnit.title, for: .normal)
+        weatherUnitButton.setTitle(weatherDataStore?.weatherUnit.title, for: .normal)
         if let cityName = cityTextField.text {
             if cityName.isEmpty {
                 self.alertError(message: "City name is empty")
             } else {
-                self.weatherDataStore?.cityName = cityName
                 self.showLoadingView()
-                interactor?.getCurrentWeather(cityName: cityName, weatherUnit: weatherUnit)
+                interactor?.getCurrentWeather(cityName: cityName, weatherUnit: weatherDataStore?.weatherUnit ?? .celsius)
             }
         }
     }
     
     @IBAction func forecastOnClick(_ sender: UIBarButtonItem) {
         hideKeyboard()
-        router?.navigateToForecastSegue()
+        if let _ = weatherDataStore?.cityName {
+            router?.navigateToForecastSegue()
+        } else {
+            alertError(message: "Invalid city name")
+        }
+        
     }
     
     func getCurrentWeatherOnComplete(viewModel: WeatherViewModel.Weather) {
@@ -115,6 +121,7 @@ class WeatherViewController: BaseViewController, WeatherDisplayLogic {
     
     func setDataValue(viewModel: WeatherViewModel.Weather?) {
         self.temperatureLabel.text = viewModel?.temp ?? "N/A"
+        self.timezoneLabel.text = viewModel?.time ?? "N/A"
         self.humidityLabel.text = viewModel?.humidity ?? "N/A"
         self.pressureLabel.text = viewModel?.pressure ?? "N/A"
         self.cloudLabel.text = viewModel?.cloud ?? "N/A"
@@ -127,6 +134,7 @@ class WeatherViewController: BaseViewController, WeatherDisplayLogic {
             self.weatherImageView.image = UIImage()
         }
         
+        self.weatherDataStore?.cityName = viewModel?.cityName
         self.weatherDataStore?.temperature = viewModel?.temp
         self.weatherDataStore?.weatherImageURL = viewModel?.weathericonURL
         self.weatherDataStore?.weatherDescription = viewModel?.weatherDescriotion

@@ -8,7 +8,7 @@
 import Foundation
 
 protocol WeatherPresentationLogic {
-    func getWeatherOnComplete(response: WeatherModel.GetWeather.Response, weatherUnit: WeatherUnit)
+    func getWeatherOnComplete(response: WeatherModel.GetWeather.Response, cityName: String, weatherUnit: WeatherUnit)
     func getWeatherOnError(error: NetworkError)
 }
 
@@ -20,15 +20,24 @@ class WeatherPresenter: WeatherPresentationLogic {
         self.viewController = viewController
     }
     
-    func getWeatherOnComplete(response: WeatherModel.GetWeather.Response, weatherUnit: WeatherUnit) {
-        let unit = weatherUnit == .celsius ? "C" : "F"
+    func getWeatherOnComplete(response: WeatherModel.GetWeather.Response, cityName: String, weatherUnit: WeatherUnit) {
+        let tempUnit = weatherUnit == .celsius ? "C" : "F"
+        let windSpeed = weatherUnit == .celsius ? "m/s NE" : "m/h NE"
+        
+        var time: String?
+        if let timezone = response.dt {
+            let dt = Date(milliseconds: timezone)
+            time = dt.formattedString(format: "HH:mm")
+        }
         
         let weatherViewModel = WeatherViewModel.Weather(
+            cityName: cityName,
+            time: time ?? "N/A",
             pressure: DataHelper.shared.formattNumberDecimal(number: response.main?.pressure, point: 0) + " hPa",
             weatherDescriotion: response.weather?.first?.description ?? "",
-            windSpeed: DataHelper.shared.formattNumberDecimal(number: response.wind?.speed, point: 2) + " m/s NE",
+            windSpeed: DataHelper.shared.formattNumberDecimal(number: response.wind?.speed, point: 2) + " " + windSpeed,
             humidity: DataHelper.shared.formattNumberDecimal(number: response.main?.humidity, point: 0) + "%",
-            temp: (DataHelper.shared.formattNumberDecimal(number: response.main?.temp, point: 0)) + "°" + unit ,
+            temp: (DataHelper.shared.formattNumberDecimal(number: response.main?.temp, point: 0)) + "°" + tempUnit ,
             cloud: DataHelper.shared.formattNumberDecimal(number: response.clouds?.all, point: 0) + "%",
             weathericonURL: "http://openweathermap.org/img/wn/\(response.weather?.first?.icon ?? "")@4x.png"
         )

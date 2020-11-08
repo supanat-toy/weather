@@ -56,14 +56,15 @@ class ForecastViewController: BaseViewController, ForecastDisplayLogic {
     }
     
     func setupData() {
-        if let cityName = weatherDataStore?.cityName, !cityName.isEmpty, let weatherUnit = weatherDataStore?.weatherUnit {
+        if let cityName = weatherDataStore?.cityName,
+           let weatherUnit = weatherDataStore?.weatherUnit {
             showLoadingView()
             interactor?.getForecast5Days(cityName: cityName, weatherUnit: weatherUnit)
         }
     }
     
     func setupView() {
-        self.title = weatherDataStore?.cityName
+        self.title = "📍\(weatherDataStore?.cityName ?? "")"
         temperatureLabel.text = weatherDataStore?.temperature ?? "N/A"
         weatherDescriptionLabel.text = weatherDataStore?.weatherDescription ?? "N/A"
         if let weatherImageURL = weatherDataStore?.weatherImageURL {

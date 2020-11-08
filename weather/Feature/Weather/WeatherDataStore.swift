@@ -9,16 +9,16 @@ import Foundation
 
 struct WeatherDataStore {
     var cityName: String?
-    var weatherUnit: WeatherUnit?
+    var weatherUnit: WeatherUnit
     var temperature: String?
     var weatherDescription: String?
     var weatherImageURL: String?
     
-    init(weatherUnit: WeatherUnit?) {
+    init(weatherUnit: WeatherUnit) {
         self.weatherUnit = weatherUnit
     }
     
-    init(cityName: String?, weatherUnit: WeatherUnit?, temperature: String?, weatherDescription: String?, weatherImageURL: String?) {
+    init(cityName: String?, weatherUnit: WeatherUnit, temperature: String?, weatherDescription: String?, weatherImageURL: String?) {
         self.cityName = cityName
         self.weatherUnit = weatherUnit
         self.temperature = temperature

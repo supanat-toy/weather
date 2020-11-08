@@ -11,11 +11,11 @@ enum WeatherModel {
     struct GetWeather {
         struct Request: Encodable {
             var cityName: String
-            var unit: String
+            var units: String
         }
         
         struct Response: Decodable {
-            var timezone: Int?
+            var dt: Int64?
             var name: String?
             var weather: [Weather]?
             var main: Main?
@@ -58,7 +58,7 @@ enum WeatherModel {
     struct GetForecast5Days {
         struct Request: Encodable {
             var cityName: String
-            var unit: String
+            var units: String
         }
         
         struct Response: Decodable {

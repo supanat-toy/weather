@@ -31,15 +31,36 @@ class WeatherViewControllerTest: XCTestCase {
     }
     
     func testForecastOnClickToCalledNavigateToForecastSegue() {
+        let weatherDataStore = WeatherDataStore(
+            cityName: "Thailand",
+            weatherUnit: .celsius,
+            temperature: nil,
+            weatherDescription: nil,
+            weatherImageURL: nil)
+        viewController.weatherDataStore = weatherDataStore
+        
         viewController.forecastOnClick(UIBarButtonItem())
         XCTAssertTrue(mockRouter.isCalledNavigateToForecastSegue)
+    }
+    
+    func testForecastOnClickToNotCalledNavigateToForecastSegue() {
+        let weatherDataStore = WeatherDataStore(
+            cityName: nil,
+            weatherUnit: .celsius,
+            temperature: nil,
+            weatherDescription: nil,
+            weatherImageURL: nil)
+        viewController.weatherDataStore = weatherDataStore
+        
+        viewController.forecastOnClick(UIBarButtonItem())
+        XCTAssertFalse(mockRouter.isCalledNavigateToForecastSegue)
     }
     
     func testGetCurrentWeatherOnSuccess() {
         mockInteractor.clearData()
         
         viewController.cityTextField.text = "Bangkok, TH"
-        viewController.weatherUnit = .fahrenheit
+        viewController.weatherDataStore = WeatherDataStore(weatherUnit: .fahrenheit)
         
         viewController.getCurrentWeather()
         
@@ -52,7 +73,7 @@ class WeatherViewControllerTest: XCTestCase {
         mockInteractor.clearData()
         
         viewController.cityTextField.text = nil
-        viewController.weatherUnit = .fahrenheit
+        viewController.weatherDataStore = WeatherDataStore(weatherUnit: .fahrenheit)
         
         viewController.getCurrentWeather()
         
@@ -63,7 +84,7 @@ class WeatherViewControllerTest: XCTestCase {
         mockInteractor.clearData()
         
         viewController.cityTextField.text = ""
-        viewController.weatherUnit = .fahrenheit
+        viewController.weatherDataStore = WeatherDataStore(weatherUnit: .fahrenheit)
         
         viewController.getCurrentWeather()
         
@@ -71,10 +92,10 @@ class WeatherViewControllerTest: XCTestCase {
     }
     
     func testChangeWeatherUnitOnClick() {
-        viewController.weatherUnit = .fahrenheit
+        viewController.weatherDataStore = WeatherDataStore(weatherUnit: .fahrenheit)
         viewController.changeWeatherUnitOnClick(UIButton())
         
-        XCTAssertEqual(.celsius, viewController.weatherUnit)
+        XCTAssertEqual(.celsius, viewController.weatherDataStore?.weatherUnit)
         XCTAssertTrue(mockInteractor.isCalledGetCurrentWeather)
         XCTAssertEqual(WeatherUnit.celsius.title, viewController.weatherUnitButton.titleLabel?.text)
         XCTAssertEqual(.celsius, mockInteractor.weatherUnit)
@@ -84,7 +105,7 @@ class WeatherViewControllerTest: XCTestCase {
         viewController.cityTextField.text = "Roiet, TH"
         viewController.searchOnClick(UIButton())
         
-        XCTAssertEqual(.celsius, viewController.weatherUnit)
+        XCTAssertEqual(.celsius, viewController.weatherDataStore?.weatherUnit)
         XCTAssertEqual("Roiet, TH", mockInteractor.cityName)
         XCTAssertTrue(mockInteractor.isCalledGetCurrentWeather)
     }

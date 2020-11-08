@@ -65,7 +65,7 @@ class MockWeatherPresenter: WeatherPresentationLogic {
     var error: NetworkError?
     var isCalledGetWeatherOnError = false
     
-    func getWeatherOnComplete(response: WeatherModel.GetWeather.Response, weatherUnit: WeatherUnit) {
+    func getWeatherOnComplete(response: WeatherModel.GetWeather.Response, cityName: String, weatherUnit: WeatherUnit) {
         self.response = response
         self.weatherUnit = weatherUnit
         self.isCalledGetWeatherOnComplete = true

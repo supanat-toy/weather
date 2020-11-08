@@ -24,7 +24,7 @@ class ForecastPresenterTest: XCTestCase {
         let response = WeatherModel.GetForecast5Days.Response(
             list: [
                 WeatherModel.GetForecast5Days.Response.Forecast(
-                    dt: 104323312,
+                    dt: 1604858400,
                     main: WeatherModel.GetForecast5Days.Response.Forecast.Main(
                         temp: 37.23,
                         temp_min: 37.02,
@@ -47,7 +47,7 @@ class ForecastPresenterTest: XCTestCase {
                     clouds: WeatherModel.GetForecast5Days.Response.Forecast.Cloud(all: 80)
                 ),
                 WeatherModel.GetForecast5Days.Response.Forecast(
-                    dt: 104324342,
+                    dt: 1604869200,
                     main: WeatherModel.GetForecast5Days.Response.Forecast.Main(
                         temp: 37.23,
                         temp_min: 37.19,
@@ -61,6 +61,29 @@ class ForecastPresenterTest: XCTestCase {
                     weather: [WeatherModel.GetForecast5Days.Response.Forecast.Weather(
                                 main: "Cloud",
                                 description: "Clear cloud",
+                                icon: "02n")
+                    ],
+                    wind: WeatherModel.GetForecast5Days.Response.Forecast.Wind(
+                        speed: 1234,
+                        deg: 21
+                    ),
+                    clouds: WeatherModel.GetForecast5Days.Response.Forecast.Cloud(all: 55)
+                ),
+                WeatherModel.GetForecast5Days.Response.Forecast(
+                    dt: 1604955600,
+                    main: WeatherModel.GetForecast5Days.Response.Forecast.Main(
+                        temp: 36.23,
+                        temp_min: 33.19,
+                        temp_max: 42.54,
+                        pressure: 230,
+                        humidity: 350,
+                        sea_level: 120,
+                        grnd_level: 214,
+                        temp_kf: 38.23
+                    ),
+                    weather: [WeatherModel.GetForecast5Days.Response.Forecast.Weather(
+                                main: "Cloud 2",
+                                description: "Clear cloud 2",
                                 icon: "02n")
                     ],
                     wind: WeatherModel.GetForecast5Days.Response.Forecast.Wind(
@@ -77,21 +100,29 @@ class ForecastPresenterTest: XCTestCase {
         XCTAssertFalse(viewController.isCalledGetForecast5DaysOnError)
         XCTAssertNil(viewController.errorMessage)
         
-//        XCTAssertEqual("70%", viewController.viewModel?.cloud)
-//        XCTAssertEqual("40%", viewController.viewModel?.humidity)
-//        XCTAssertEqual("12 hPa", viewController.viewModel?.pressure)
-//        XCTAssertEqual("38°F", viewController.viewModel?.temp)
-//        XCTAssertEqual("clear cloud", viewController.viewModel?.weatherDescriotion)
-//        XCTAssertEqual("http://openweathermap.org/img/wn/10d@4x.png", viewController.viewModel?.weathericonURL)
-//        XCTAssertEqual("24.43 m/s NE", viewController.viewModel?.windSpeed)
-        // TODO: 123 test
+        XCTAssertEqual("Monday, November 9", viewController.viewModel?.forecastByDates?[0].date)
+        XCTAssertEqual("01:00", viewController.viewModel?.forecastByDates?[0].values[0].time)
+        XCTAssertEqual("39/37°C", viewController.viewModel?.forecastByDates?[0].values[0].tempMaxMin)
+        XCTAssertEqual("heavy rain", viewController.viewModel?.forecastByDates?[0].values[0].weatherDescription)
+        XCTAssertEqual("http://openweathermap.org/img/wn/11d@2x.png", viewController.viewModel?.forecastByDates?[0].values[0].weathericonURL)
+        
+        XCTAssertEqual("04:00", viewController.viewModel?.forecastByDates?[0].values[1].time)
+        XCTAssertEqual("39/37°C", viewController.viewModel?.forecastByDates?[0].values[1].tempMaxMin)
+        XCTAssertEqual("Clear cloud", viewController.viewModel?.forecastByDates?[0].values[1].weatherDescription)
+        XCTAssertEqual("http://openweathermap.org/img/wn/02n@2x.png", viewController.viewModel?.forecastByDates?[0].values[1].weathericonURL)
+       
+        XCTAssertEqual("Tuesday, November 10", viewController.viewModel?.forecastByDates?[1].date)
+        XCTAssertEqual("04:00", viewController.viewModel?.forecastByDates?[1].values[0].time)
+        XCTAssertEqual("43/33°C", viewController.viewModel?.forecastByDates?[1].values[0].tempMaxMin)
+        XCTAssertEqual("Clear cloud 2", viewController.viewModel?.forecastByDates?[1].values[0].weatherDescription)
+        XCTAssertEqual("http://openweathermap.org/img/wn/02n@2x.png", viewController.viewModel?.forecastByDates?[1].values[0].weathericonURL)
     }
     
     func testGetForecast5DaysOnSuccessWithFahrenheit() {
         let response = WeatherModel.GetForecast5Days.Response(
             list: [
                 WeatherModel.GetForecast5Days.Response.Forecast(
-                    dt: 104323312,
+                    dt: 1604858400,
                     main: WeatherModel.GetForecast5Days.Response.Forecast.Main(
                         temp: 37.23,
                         temp_min: 37.02,
@@ -114,7 +145,7 @@ class ForecastPresenterTest: XCTestCase {
                     clouds: WeatherModel.GetForecast5Days.Response.Forecast.Cloud(all: 80)
                 ),
                 WeatherModel.GetForecast5Days.Response.Forecast(
-                    dt: 104324342,
+                    dt: 1604869200,
                     main: WeatherModel.GetForecast5Days.Response.Forecast.Main(
                         temp: 37.23,
                         temp_min: 37.19,
@@ -135,6 +166,29 @@ class ForecastPresenterTest: XCTestCase {
                         deg: 21
                     ),
                     clouds: WeatherModel.GetForecast5Days.Response.Forecast.Cloud(all: 55)
+                ),
+                WeatherModel.GetForecast5Days.Response.Forecast(
+                    dt: 1604955600,
+                    main: WeatherModel.GetForecast5Days.Response.Forecast.Main(
+                        temp: 36.23,
+                        temp_min: 33.19,
+                        temp_max: 42.54,
+                        pressure: 230,
+                        humidity: 350,
+                        sea_level: 120,
+                        grnd_level: 214,
+                        temp_kf: 38.23
+                    ),
+                    weather: [WeatherModel.GetForecast5Days.Response.Forecast.Weather(
+                                main: "Cloud 2",
+                                description: "Clear cloud 2",
+                                icon: "02n")
+                    ],
+                    wind: WeatherModel.GetForecast5Days.Response.Forecast.Wind(
+                        speed: 1234,
+                        deg: 21
+                    ),
+                    clouds: WeatherModel.GetForecast5Days.Response.Forecast.Cloud(all: 55)
                 )
             ])
         
@@ -144,13 +198,22 @@ class ForecastPresenterTest: XCTestCase {
         XCTAssertFalse(viewController.isCalledGetForecast5DaysOnError)
         XCTAssertNil(viewController.errorMessage)
         
-//        XCTAssertEqual("70%", viewController.viewModel?.cloud)
-//        XCTAssertEqual("40%", viewController.viewModel?.humidity)
-//        XCTAssertEqual("12 hPa", viewController.viewModel?.pressure)
-//        XCTAssertEqual("38°F", viewController.viewModel?.temp)
-//        XCTAssertEqual("clear cloud", viewController.viewModel?.weatherDescriotion)
-//        XCTAssertEqual("http://openweathermap.org/img/wn/10d@4x.png", viewController.viewModel?.weathericonURL)
-//        XCTAssertEqual("24.43 m/s NE", viewController.viewModel?.windSpeed)
+        XCTAssertEqual("Monday, November 9", viewController.viewModel?.forecastByDates?[0].date)
+        XCTAssertEqual("01:00", viewController.viewModel?.forecastByDates?[0].values[0].time)
+        XCTAssertEqual("39/37°F", viewController.viewModel?.forecastByDates?[0].values[0].tempMaxMin)
+        XCTAssertEqual("heavy rain", viewController.viewModel?.forecastByDates?[0].values[0].weatherDescription)
+        XCTAssertEqual("http://openweathermap.org/img/wn/11d@2x.png", viewController.viewModel?.forecastByDates?[0].values[0].weathericonURL)
+        
+        XCTAssertEqual("04:00", viewController.viewModel?.forecastByDates?[0].values[1].time)
+        XCTAssertEqual("39/37°F", viewController.viewModel?.forecastByDates?[0].values[1].tempMaxMin)
+        XCTAssertEqual("Clear cloud", viewController.viewModel?.forecastByDates?[0].values[1].weatherDescription)
+        XCTAssertEqual("http://openweathermap.org/img/wn/02n@2x.png", viewController.viewModel?.forecastByDates?[0].values[1].weathericonURL)
+       
+        XCTAssertEqual("Tuesday, November 10", viewController.viewModel?.forecastByDates?[1].date)
+        XCTAssertEqual("04:00", viewController.viewModel?.forecastByDates?[1].values[0].time)
+        XCTAssertEqual("43/33°F", viewController.viewModel?.forecastByDates?[1].values[0].tempMaxMin)
+        XCTAssertEqual("Clear cloud 2", viewController.viewModel?.forecastByDates?[1].values[0].weatherDescription)
+        XCTAssertEqual("http://openweathermap.org/img/wn/02n@2x.png", viewController.viewModel?.forecastByDates?[1].values[0].weathericonURL)
     }
     
     func testGetForecast5DaysOnError() {

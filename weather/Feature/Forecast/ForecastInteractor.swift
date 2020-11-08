@@ -25,7 +25,7 @@ class ForecastInteractor: ForecastBusinessLogic {
     }
     
     func getForecast5Days(cityName: String, weatherUnit: WeatherUnit) {
-        let request = WeatherModel.GetForecast5Days.Request(cityName: cityName, unit: weatherUnit.rawValue)
+        let request = WeatherModel.GetForecast5Days.Request(cityName: cityName, units: weatherUnit.rawValue)
         let dispose = worker?.GetForecast5Days(request: request).subscribe(onNext: { (response) in
             self.presenter?.getForecast5DaysOnComplete(response: response, weatherUnit: weatherUnit)
         }, onError: { (error) in

@@ -63,21 +63,6 @@ class ForecastViewControllerTest: XCTestCase {
         XCTAssertFalse(mockInteractor.isCalledGetForecast5Days)
     }
     
-    func testGetForecast5DaysOnErrorWithInvalidWeatherUnit() {
-        mockInteractor.clearData()
-        
-        viewController.weatherDataStore = WeatherDataStore(
-            cityName: "Bangkok, TH",
-            weatherUnit: nil,
-            temperature: nil,
-            weatherDescription: nil,
-            weatherImageURL: nil
-        )
-        
-        viewController.viewDidLoad()
-        XCTAssertFalse(mockInteractor.isCalledGetForecast5Days)
-    }
-    
     func testRegisterTableViewCell() {
         viewController.registerTableViewCell()
         

@@ -22,7 +22,7 @@ class WeatherPresenterTest: XCTestCase {
     
     func testGetCurrentWeatherOnSuccessWithCelsius() {
         let response = WeatherModel.GetWeather.Response(
-            timezone: 10324453,
+            dt: 10324453,
             name: "Bangkok",
             weather: [WeatherModel.GetWeather.Response.Weather(
                         main: "cloud",
@@ -48,7 +48,7 @@ class WeatherPresenterTest: XCTestCase {
                 sunset: 10231232
             )
         )
-        presenter.getWeatherOnComplete(response: response, weatherUnit: .celsius)
+        presenter.getWeatherOnComplete(response: response, cityName: "Bangkok", weatherUnit: .celsius)
         
         XCTAssertTrue(viewController.isCalledGetCurrentWeatherOnComplete)
         XCTAssertFalse(viewController.isCalledGetCurrentWeatherOnError)
@@ -65,7 +65,7 @@ class WeatherPresenterTest: XCTestCase {
     
     func testGetCurrentWeatherOnSuccessWithFahrenheit() {
         let response = WeatherModel.GetWeather.Response(
-            timezone: 10324453,
+            dt: 10324453,
             name: "Bangkok",
             weather: [WeatherModel.GetWeather.Response.Weather(
                         main: "cloud",
@@ -91,7 +91,7 @@ class WeatherPresenterTest: XCTestCase {
                 sunset: 10231232
             )
         )
-        presenter.getWeatherOnComplete(response: response, weatherUnit: .fahrenheit)
+        presenter.getWeatherOnComplete(response: response, cityName: "Bangkok", weatherUnit: .fahrenheit)
         
         XCTAssertTrue(viewController.isCalledGetCurrentWeatherOnComplete)
         XCTAssertFalse(viewController.isCalledGetCurrentWeatherOnError)
@@ -103,7 +103,7 @@ class WeatherPresenterTest: XCTestCase {
         XCTAssertEqual("38°F", viewController.viewModel?.temp)
         XCTAssertEqual("clear cloud", viewController.viewModel?.weatherDescriotion)
         XCTAssertEqual("http://openweathermap.org/img/wn/10d@4x.png", viewController.viewModel?.weathericonURL)
-        XCTAssertEqual("24.43 m/s NE", viewController.viewModel?.windSpeed)
+        XCTAssertEqual("24.43 m/h NE", viewController.viewModel?.windSpeed)
     }
     
     func testGetCurrentWeatherOnError() {

@@ -26,9 +26,9 @@ class WeatherInteractor: WeatherBusinessLogic {
     }
     
     func getCurrentWeather(cityName: String, weatherUnit: WeatherUnit) {
-        let request = WeatherModel.GetWeather.Request(cityName: cityName, unit: weatherUnit.rawValue)
+        let request = WeatherModel.GetWeather.Request(cityName: cityName, units: weatherUnit.rawValue)
         let dispose = worker?.GetWeather(request: request).subscribe(onNext: { (response) in
-            self.presenter?.getWeatherOnComplete(response: response, weatherUnit: weatherUnit)
+            self.presenter?.getWeatherOnComplete(response: response, cityName: cityName, weatherUnit: weatherUnit)
         }, onError: { (error) in
             self.presenter?.getWeatherOnError(error: NetworkError(error: error))
         })

@@ -96,4 +96,19 @@ class WeatherUITest: BaseUITest {
         XCTAssertEqual("N/A", weatherWindLabel)
         XCTAssertEqual("N/A", weatherCloudLabel)
     }
+    
+    func testInvalidCityNameShouldCannotNavigateToForecast() {
+        let cityTextField = app.textFields["city_text_field"]
+        cityTextField.tap()
+        cityTextField.clearAndEnterText(text: "abc123")
+        app.buttons["search_button"].tap()
+        
+        let alert = app.alerts["Error"]
+        let button = alert.buttons["OK"]
+        button.tap()
+        
+        app.navigationBars.buttons.element(boundBy: 0).tap()
+        
+        XCTAssertTrue(app.alerts["Error"].exists)
+    }
 }

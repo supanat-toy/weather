@@ -43,11 +43,11 @@ extension WeatherService: TargetType {
         switch self {
         case .getWeather(let request):
             return ["q": request.cityName,
-                    "units": request.unit,
+                    "units": request.units,
                     "appid": APP_ID]
         case .getForecast5Days(let request):
             return ["q": request.cityName,
-                    "units": request.unit,
+                    "units": request.units,
                     "appid": APP_ID]
         }
     }
