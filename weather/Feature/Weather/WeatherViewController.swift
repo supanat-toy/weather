@@ -75,13 +75,6 @@ class WeatherViewController: BaseViewController, WeatherDisplayLogic {
     
     func setupView() {
         setTapGestureKeyboard(tapView: self.view)
-        containerTopView.layer.masksToBounds = false
-        containerTopView.layer.shadowColor = UIColor.lightGray.cgColor
-        containerTopView.layer.shadowOpacity = 0.5
-        containerTopView.layer.shadowOffset = .zero
-        containerTopView.layer.shadowRadius = 5
-        containerTopView.layer.cornerRadius = 5
-        
         cityTextField.text = "Sukhumvit, TH"
     }
     

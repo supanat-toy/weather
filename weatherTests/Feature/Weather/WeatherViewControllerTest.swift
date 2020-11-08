@@ -59,6 +59,17 @@ class WeatherViewControllerTest: XCTestCase {
         XCTAssertFalse(mockInteractor.isCalledGetCurrentWeather)
     }
     
+    func testGetCurrentWeatherOnErrorWithEmptyCityTextField() {
+        mockInteractor.clearData()
+        
+        viewController.cityTextField.text = ""
+        viewController.weatherUnit = .fahrenheit
+        
+        viewController.getCurrentWeather()
+        
+        XCTAssertFalse(mockInteractor.isCalledGetCurrentWeather)
+    }
+    
     func testChangeWeatherUnitOnClick() {
         viewController.weatherUnit = .fahrenheit
         viewController.changeWeatherUnitOnClick(UIButton())

@@ -44,8 +44,18 @@ class DataHelperTest: XCTestCase {
         XCTAssertEqual("12", result)
     }
     
-    func testFormattNumberDecimalWithNilNumberIsZero() {
-        let result = dataHelper.formattNumberDecimal(number: nil, point: 4)
-        XCTAssertEqual("0.0000", result)
+    func testFormattNumberDecimalWithAddedComma() {
+        let result = dataHelper.formattNumberDecimal(number: 2143.344321, point: 4)
+        XCTAssertEqual("2,143.3443", result)
+    }
+    
+    func testFormattNumberDecimalWithAddedCommaAndHalfUp() {
+        let result = dataHelper.formattNumberDecimal(number: 2143.3821, point: 1)
+        XCTAssertEqual("2,143.4", result)
+    }
+    
+    func testFormattNumberDecimalWithNullNumber() {
+        let result = dataHelper.formattNumberDecimal(number: nil, point: 1)
+        XCTAssertEqual("", result)
     }
 }

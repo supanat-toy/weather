@@ -56,4 +56,44 @@ class WeatherUITest: BaseUITest {
             XCTAssertTrue(tempLabel.exists)
         }
     }
+    
+    func testSearchEmptyCityName() {
+        let cityTextField = app.textFields["city_text_field"]
+        cityTextField.tap()
+        cityTextField.clearAndEnterText(text: "")
+        app.buttons["search_button"].tap()
+        
+        XCTAssertEqual(app.alerts.element.label, "Error")
+        
+        addUIInterruptionMonitor(withDescription: "City name is empty") { (alert) -> Bool in
+            alert.buttons["OK"].tap()
+            return true
+        }
+    }
+    
+    func testCheckHandleValueWhenInvalidCityName() {
+        let cityTextField = app.textFields["city_text_field"]
+        cityTextField.tap()
+        cityTextField.clearAndEnterText(text: "abc123")
+        app.buttons["search_button"].tap()
+        
+        let alert = app.alerts["Error"]
+        let button = alert.buttons["OK"]
+        button.tap()
+        
+        let tempLabel = app.staticTexts["weather_temp_label"].label
+        let weatherDescriptionLabel = app.staticTexts["weather_description_label"].label
+        let weatherHumidityLabel = app.staticTexts["weather_humidity_label"].label
+        let weatherPressureLabel = app.staticTexts["weather_pressure_label"].label
+        let weatherWindLabel = app.staticTexts["weather_wind_label"].label
+        let weatherCloudLabel = app.staticTexts["weather_cloud_label"].label
+        
+        XCTAssertEqual("N/A", tempLabel)
+        XCTAssertEqual("N/A", weatherDescriptionLabel)
+        
+        XCTAssertEqual("N/A", weatherHumidityLabel)
+        XCTAssertEqual("N/A", weatherPressureLabel)
+        XCTAssertEqual("N/A", weatherWindLabel)
+        XCTAssertEqual("N/A", weatherCloudLabel)
+    }
 }

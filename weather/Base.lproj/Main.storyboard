@@ -34,10 +34,24 @@
                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HzU-TB-IhJ">
-                                                <rect key="frame" x="321" y="5" width="48" height="30"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HzU-TB-IhJ">
+                                                <rect key="frame" x="319" y="3" width="50" height="34"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="search_button"/>
-                                                <state key="normal" title="Search"/>
+                                                <state key="normal">
+                                                    <attributedString key="attributedTitle">
+                                                        <fragment content="Search">
+                                                            <attributes>
+                                                                <color key="NSColor" red="0.11795843390000001" green="0.14230811600000001" blue="0.25580033660000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <font key="NSFont" size="16" name="Avenir-Heavy"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" lineSpacing="1" defaultTabInterval="28" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                                    <tabStops/>
+                                                                </paragraphStyle>
+                                                                <integer key="NSUnderline" value="1"/>
+                                                                <color key="NSUnderlineColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                </state>
                                                 <connections>
                                                     <action selector="searchOnClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VxH-Vu-y4F"/>
                                                 </connections>
@@ -67,14 +81,14 @@
                                                 <rect key="frame" x="15" y="10" width="55.5" height="48"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="weather_temp_label"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="35"/>
-                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ctl-G7-7Il">
                                                 <rect key="frame" x="15" y="53" width="0.0" height="0.0"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="weather_description_label"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="21"/>
-                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tPl-Oh-cUF">
@@ -98,13 +112,15 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="msr-ZJ-df5">
                                                 <rect key="frame" x="323" y="105" width="46" height="30"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="change_weather_unit_button"/>
-                                                <state key="normal" title="Button"/>
+                                                <state key="normal" title="Button">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="changeWeatherUnitOnClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8cK-GW-pCU"/>
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.93179160360000002" green="0.93194800619999996" blue="0.93176954980000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.25490196078431371" green="0.29411764705882354" blue="0.44705882352941173" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="tPl-Oh-cUF" firstAttribute="bottom" secondItem="5kT-lH-ySa" secondAttribute="bottom" constant="10" id="4xi-w0-N5x"/>
                                             <constraint firstAttribute="trailing" secondItem="5kT-lH-ySa" secondAttribute="trailing" constant="10" id="54b-0h-ugd"/>
@@ -158,6 +174,7 @@
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="76%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ocw-7O-veq">
                                                                 <rect key="frame" x="71.5" y="10" width="42" height="51"/>
+                                                                <accessibility key="accessibilityConfiguration" identifier="weather_humidity_label"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                                                 <color key="textColor" red="0.68470364809999995" green="0.82884943489999996" blue="0.96080356840000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                 <nil key="highlightedColor"/>
@@ -176,7 +193,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
-                                                        <color key="backgroundColor" red="0.22044122220000001" green="0.25823074579999999" blue="0.3980042338" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" red="0.25490196078431371" green="0.29411764705882354" blue="0.44705882352941173" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstItem="WDI-qa-KJu" firstAttribute="centerX" secondItem="3lf-hL-5yr" secondAttribute="centerX" id="TdZ-wm-pOi"/>
                                                             <constraint firstItem="3lf-hL-5yr" firstAttribute="centerX" secondItem="ocw-7O-veq" secondAttribute="centerX" id="V3B-40-dHt"/>
@@ -197,6 +214,7 @@
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="76%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TAt-xD-3Qg">
                                                                 <rect key="frame" x="71.5" y="10" width="42" height="51"/>
+                                                                <accessibility key="accessibilityConfiguration" identifier="weather_pressure_label"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                                                 <color key="textColor" red="0.68470364809999995" green="0.82884943489999996" blue="0.96080356840000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                 <nil key="highlightedColor"/>
@@ -215,7 +233,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
-                                                        <color key="backgroundColor" red="0.22044122220000001" green="0.25823074579999999" blue="0.3980042338" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" red="0.25490196078431371" green="0.29411764705882354" blue="0.44705882352941173" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstItem="TAt-xD-3Qg" firstAttribute="centerX" secondItem="KdA-ex-Gzn" secondAttribute="centerX" id="1Xz-eT-ZPy"/>
                                                             <constraint firstItem="v2g-Nr-Q8a" firstAttribute="top" secondItem="n0i-sa-qAc" secondAttribute="bottom" constant="10" id="Btg-KN-xls"/>
@@ -241,6 +259,7 @@
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="76%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="042-vp-zt0">
                                                                 <rect key="frame" x="71.5" y="10" width="42" height="51"/>
+                                                                <accessibility key="accessibilityConfiguration" identifier="weather_wind_label"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                                                 <color key="textColor" red="0.68470364809999995" green="0.82884943489999996" blue="0.96080356840000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                 <nil key="highlightedColor"/>
@@ -259,7 +278,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
-                                                        <color key="backgroundColor" red="0.22044122220000001" green="0.25823074579999999" blue="0.3980042338" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" red="0.25490196078431371" green="0.29411764705882354" blue="0.44705882352941173" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstItem="mLa-uS-pif" firstAttribute="centerX" secondItem="042-vp-zt0" secondAttribute="centerX" id="93C-0S-4OF"/>
                                                             <constraint firstItem="mLa-uS-pif" firstAttribute="top" secondItem="042-vp-zt0" secondAttribute="bottom" constant="5" id="HcX-BK-T6a"/>
@@ -280,6 +299,7 @@
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="76%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hD1-9D-zFu">
                                                                 <rect key="frame" x="71.5" y="10" width="42" height="51"/>
+                                                                <accessibility key="accessibilityConfiguration" identifier="weather_cloud_label"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                                                 <color key="textColor" red="0.68470364809999995" green="0.82884943489999996" blue="0.96080356840000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                 <nil key="highlightedColor"/>
@@ -298,7 +318,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
-                                                        <color key="backgroundColor" red="0.22044122220000001" green="0.25823074579999999" blue="0.3980042338" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" red="0.25490196078431371" green="0.29411764705882354" blue="0.44705882352941173" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstItem="iyd-Py-qcv" firstAttribute="centerX" secondItem="IFy-g5-sK4" secondAttribute="centerX" id="7wz-30-JUh"/>
                                                             <constraint firstItem="hD1-9D-zFu" firstAttribute="top" secondItem="bIo-mN-4ky" secondAttribute="top" constant="10" id="7zU-eU-gpM"/>
@@ -383,14 +403,14 @@
                                                 <rect key="frame" x="15" y="10" width="76" height="48"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="forecast_temp_label"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="35"/>
-                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="asdasd" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jsk-A9-arc">
-                                                <rect key="frame" x="15" y="53" width="65.5" height="29"/>
+                                                <rect key="frame" x="15" y="53" width="56.5" height="25"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="forecast_description_label"/>
-                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="21"/>
-                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jsv-rd-3bc">
@@ -417,7 +437,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.94207262989999996" green="0.94223070139999998" blue="0.94205039739999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.25490196078431371" green="0.29411764705882354" blue="0.44705882352941173" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="93" id="2MA-b6-BhJ"/>
                                             <constraint firstItem="Jsk-A9-arc" firstAttribute="top" secondItem="mV2-It-zau" secondAttribute="bottom" constant="-5" id="2XA-MV-OHl"/>

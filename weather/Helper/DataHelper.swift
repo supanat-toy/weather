@@ -11,6 +11,15 @@ class DataHelper {
     static let shared = DataHelper()
     
     func formattNumberDecimal(number: Double?, point: Int) -> String {
-        return String(format: "%.\(point)f", number ?? 0)
+        if number == nil {
+            return ""
+        }
+        
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.minimumFractionDigits = point
+        formatter.maximumFractionDigits = point
+        
+        return formatter.string(for: number) ?? "0"
     }
 }
