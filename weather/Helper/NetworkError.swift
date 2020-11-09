@@ -1,9 +1,8 @@
 //
 //  NetworkError.swift
-//  StreamingFund
+//  weather
 //
-//  Created by Supakit Thanadittagorn on 11/14/2559 BE.
-//  Copyright © 2559 Settrade. All rights reserved.
+//  Created by Supanat on 5/11/2563 BE.
 //
 
 import Foundation

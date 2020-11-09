@@ -64,11 +64,6 @@ class WeatherUITest: BaseUITest {
         app.buttons["search_button"].tap()
         
         XCTAssertEqual(app.alerts.element.label, "Error")
-        
-        addUIInterruptionMonitor(withDescription: "City name is empty") { (alert) -> Bool in
-            alert.buttons["OK"].tap()
-            return true
-        }
     }
     
     func testCheckHandleValueWhenInvalidCityName() {

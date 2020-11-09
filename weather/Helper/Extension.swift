@@ -38,7 +38,16 @@ extension UIImageView {
         }.resume()
     }
     func downloaded(from link: String, contentMode mode: UIView.ContentMode = .scaleAspectFit) {
-        guard let url = URL(string: link) else { return }
+        guard let url = URL(string: link) else {
+            self.image = UIImage()
+            return
+        }
         downloaded(from: url, contentMode: mode)
+    }
+}
+
+extension String {
+    var underLined: NSAttributedString {
+        NSMutableAttributedString(string: self, attributes: [.underlineStyle: NSUnderlineStyle.single.rawValue])
     }
 }

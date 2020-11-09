@@ -1,9 +1,8 @@
 //
-//  HomeViewController+TableView.swift
-//  aomwise
+//  ForecastViewController+TableView.swift
+//  weather
 //
-//  Created by Supanat Toy on 5/9/2562 BE.
-//  Copyright © 2562 settrade. All rights reserved.
+//  Created by Supanat on 2/11/2563 BE.
 //
 
 import UIKit
@@ -24,10 +23,10 @@ extension ForecastViewController: UITableViewDataSource, UITableViewDelegate {
         tableView.backgroundView = self.tableErrorView
     }
     
-    func setupTableView() {
+    func setupTableView(errorMessage: String? = nil) {
         if forecastByDates == nil {
             tableErrorView?.setView(title: "Error",
-                                    subTitle: "City name not found.",
+                                    subTitle: errorMessage ?? "",
                                     image: UIImage(named: "icon-error-box"))
              
         } else if forecastByDates?.isEmpty ?? false {

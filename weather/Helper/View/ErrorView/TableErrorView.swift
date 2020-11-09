@@ -1,9 +1,8 @@
 //
-//  NoContentView.swift
-//  orcsoft-workshop-election-app
+//  TableErrorView.swift
+//  weather
 //
-//  Created by Supanat Toy on 18/6/2562 BE.
-//  Copyright © 2562 Supanat Toy. All rights reserved.
+//  Created by Supanat on 2/11/2563 BE.
 //
 
 import UIKit

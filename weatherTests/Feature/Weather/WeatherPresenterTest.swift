@@ -60,7 +60,7 @@ class WeatherPresenterTest: XCTestCase {
         XCTAssertEqual("38°C", viewController.viewModel?.temp)
         XCTAssertEqual("clear cloud", viewController.viewModel?.weatherDescriotion)
         XCTAssertEqual("http://openweathermap.org/img/wn/10d@4x.png", viewController.viewModel?.weathericonURL)
-        XCTAssertEqual("24.43 m/s NE", viewController.viewModel?.windSpeed)
+        XCTAssertEqual("24.43 meter/sec", viewController.viewModel?.windSpeed)
     }
     
     func testGetCurrentWeatherOnSuccessWithFahrenheit() {
@@ -103,12 +103,20 @@ class WeatherPresenterTest: XCTestCase {
         XCTAssertEqual("38°F", viewController.viewModel?.temp)
         XCTAssertEqual("clear cloud", viewController.viewModel?.weatherDescriotion)
         XCTAssertEqual("http://openweathermap.org/img/wn/10d@4x.png", viewController.viewModel?.weathericonURL)
-        XCTAssertEqual("24.43 m/h NE", viewController.viewModel?.windSpeed)
+        XCTAssertEqual("24.43 miles/hour", viewController.viewModel?.windSpeed)
     }
     
     func testGetCurrentWeatherOnError() {
         let networkError = NetworkError(code: "511", message: "something is wrong?", httpStatusCode: 500)
         presenter.getWeatherOnError(error: networkError)
+        
+        XCTAssertEqual("N/A", viewController.viewModel?.cloud)
+        XCTAssertEqual("N/A", viewController.viewModel?.humidity)
+        XCTAssertEqual("N/A", viewController.viewModel?.pressure)
+        XCTAssertEqual("N/A", viewController.viewModel?.temp)
+        XCTAssertEqual("N/A", viewController.viewModel?.weatherDescriotion)
+        XCTAssertEqual("", viewController.viewModel?.weathericonURL)
+        XCTAssertEqual("N/A", viewController.viewModel?.windSpeed)
         
         XCTAssertFalse(viewController.isCalledGetCurrentWeatherOnComplete)
         XCTAssertTrue(viewController.isCalledGetCurrentWeatherOnError)
@@ -130,8 +138,9 @@ class MockWeatherViewController: WeatherDisplayLogic {
         self.isCalledGetCurrentWeatherOnComplete = true
     }
     
-    func getCurrentWeatherOnError(errorMessage: String) {
+    func getCurrentWeatherOnError(errorMessage: String, viewModel: WeatherViewModel.Weather) {
         self.errorMessage = errorMessage
+        self.viewModel = viewModel
         self.isCalledGetCurrentWeatherOnError = true
     }
 }

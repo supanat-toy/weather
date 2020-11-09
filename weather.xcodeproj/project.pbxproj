@@ -38,7 +38,6 @@
 		845EB23425506BC2008DA208 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 845EB23225506BC2008DA208 /* Main.storyboard */; };
 		845EB23625506BC3008DA208 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 845EB23525506BC3008DA208 /* Assets.xcassets */; };
 		845EB23925506BC3008DA208 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 845EB23725506BC3008DA208 /* LaunchScreen.storyboard */; };
-		845EB24425506BC3008DA208 /* weatherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845EB24325506BC3008DA208 /* weatherTests.swift */; };
 		845EB24F25506BC3008DA208 /* WeatherUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845EB24E25506BC3008DA208 /* WeatherUITest.swift */; };
 		845EB26E25506FCB008DA208 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845EB26D25506FCB008DA208 /* WeatherViewController.swift */; };
 		845EB27625506FDC008DA208 /* WeatherInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845EB27525506FDC008DA208 /* WeatherInteractor.swift */; };
@@ -51,6 +50,14 @@
 		8462A602255462AF005074FD /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8462A601255462AF005074FD /* LoadingView.xib */; };
 		846D1F1F2557FCC200280F75 /* TableErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 846D1F1D2557FCC200280F75 /* TableErrorView.xib */; };
 		846D1F202557FCC200280F75 /* TableErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846D1F1E2557FCC200280F75 /* TableErrorView.swift */; };
+		846FDA3E2558F6F100FAF2C2 /* Avenir-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 846FDA372558F66400FAF2C2 /* Avenir-Medium.otf */; };
+		846FDA3F2558F6F100FAF2C2 /* AvenirNext-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 846FDA3C2558F66400FAF2C2 /* AvenirNext-Regular.otf */; };
+		846FDA402558F6F100FAF2C2 /* Avenir-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 846FDA362558F66400FAF2C2 /* Avenir-Heavy.otf */; };
+		846FDA412558F6F100FAF2C2 /* Avenir-Book.otf in Resources */ = {isa = PBXBuildFile; fileRef = 846FDA3B2558F66400FAF2C2 /* Avenir-Book.otf */; };
+		846FDA422558F6F100FAF2C2 /* AvenirNext-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 846FDA382558F66400FAF2C2 /* AvenirNext-Bold.otf */; };
+		846FDA432558F6F100FAF2C2 /* AvenirNext-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 846FDA3D2558F66400FAF2C2 /* AvenirNext-Heavy.otf */; };
+		846FDA442558F6F100FAF2C2 /* AvenirNext-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 846FDA392558F66400FAF2C2 /* AvenirNext-Medium.otf */; };
+		846FDA452558F6F100FAF2C2 /* Avenir-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 846FDA3A2558F66400FAF2C2 /* Avenir-Black.otf */; };
 		84BCA3E22555CC82000A56DB /* ForecastTableViewHeaderCellTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BCA3E12555CC82000A56DB /* ForecastTableViewHeaderCellTest.swift */; };
 		84BCA3EA2555CC8D000A56DB /* ForecastTableViewCellTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BCA3E92555CC8D000A56DB /* ForecastTableViewCellTest.swift */; };
 		84D4C82F25563F4300755D0B /* DataHelperTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D4C82E25563F4300755D0B /* DataHelperTest.swift */; };
@@ -119,7 +126,6 @@
 		845EB23825506BC3008DA208 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		845EB23A25506BC3008DA208 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		845EB23F25506BC3008DA208 /* weatherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = weatherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		845EB24325506BC3008DA208 /* weatherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = weatherTests.swift; sourceTree = "<group>"; };
 		845EB24525506BC3008DA208 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		845EB24A25506BC3008DA208 /* weatherUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = weatherUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		845EB24E25506BC3008DA208 /* WeatherUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherUITest.swift; sourceTree = "<group>"; };
@@ -135,6 +141,14 @@
 		8462A601255462AF005074FD /* LoadingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
 		846D1F1D2557FCC200280F75 /* TableErrorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableErrorView.xib; sourceTree = "<group>"; };
 		846D1F1E2557FCC200280F75 /* TableErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableErrorView.swift; sourceTree = "<group>"; };
+		846FDA362558F66400FAF2C2 /* Avenir-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Avenir-Heavy.otf"; sourceTree = "<group>"; };
+		846FDA372558F66400FAF2C2 /* Avenir-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Avenir-Medium.otf"; sourceTree = "<group>"; };
+		846FDA382558F66400FAF2C2 /* AvenirNext-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNext-Bold.otf"; sourceTree = "<group>"; };
+		846FDA392558F66400FAF2C2 /* AvenirNext-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNext-Medium.otf"; sourceTree = "<group>"; };
+		846FDA3A2558F66400FAF2C2 /* Avenir-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Avenir-Black.otf"; sourceTree = "<group>"; };
+		846FDA3B2558F66400FAF2C2 /* Avenir-Book.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Avenir-Book.otf"; sourceTree = "<group>"; };
+		846FDA3C2558F66400FAF2C2 /* AvenirNext-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNext-Regular.otf"; sourceTree = "<group>"; };
+		846FDA3D2558F66400FAF2C2 /* AvenirNext-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNext-Heavy.otf"; sourceTree = "<group>"; };
 		84BCA3E12555CC82000A56DB /* ForecastTableViewHeaderCellTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastTableViewHeaderCellTest.swift; sourceTree = "<group>"; };
 		84BCA3E92555CC8D000A56DB /* ForecastTableViewCellTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastTableViewCellTest.swift; sourceTree = "<group>"; };
 		84D4C82E25563F4300755D0B /* DataHelperTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHelperTest.swift; sourceTree = "<group>"; };
@@ -296,11 +310,11 @@
 				84432A8B25519B4800AFEFBA /* Helper */,
 				845EB26925506E80008DA208 /* Network */,
 				845EB26825506E59008DA208 /* Feature */,
+				846FDA342558F64A00FAF2C2 /* Resource */,
 				845EB22C25506BC2008DA208 /* AppDelegate.swift */,
 				845EB22E25506BC2008DA208 /* SceneDelegate.swift */,
 				845EB23025506BC2008DA208 /* ViewController.swift */,
 				845EB23225506BC2008DA208 /* Main.storyboard */,
-				845EB23525506BC3008DA208 /* Assets.xcassets */,
 				845EB23725506BC3008DA208 /* LaunchScreen.storyboard */,
 				845EB23A25506BC3008DA208 /* Info.plist */,
 			);
@@ -313,7 +327,6 @@
 				841CD7EB2555440F00AB8ABE /* Mock */,
 				84D4C82D25563F3600755D0B /* Helper */,
 				841CD7F4255556C000AB8ABE /* Feature */,
-				845EB24325506BC3008DA208 /* weatherTests.swift */,
 				845EB24525506BC3008DA208 /* Info.plist */,
 			);
 			path = weatherTests;
@@ -392,6 +405,30 @@
 				846D1F1D2557FCC200280F75 /* TableErrorView.xib */,
 			);
 			path = ErrorView;
+			sourceTree = "<group>";
+		};
+		846FDA342558F64A00FAF2C2 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				846FDA352558F65C00FAF2C2 /* Font */,
+				845EB23525506BC3008DA208 /* Assets.xcassets */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		846FDA352558F65C00FAF2C2 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				846FDA3A2558F66400FAF2C2 /* Avenir-Black.otf */,
+				846FDA3B2558F66400FAF2C2 /* Avenir-Book.otf */,
+				846FDA362558F66400FAF2C2 /* Avenir-Heavy.otf */,
+				846FDA372558F66400FAF2C2 /* Avenir-Medium.otf */,
+				846FDA382558F66400FAF2C2 /* AvenirNext-Bold.otf */,
+				846FDA3D2558F66400FAF2C2 /* AvenirNext-Heavy.otf */,
+				846FDA392558F66400FAF2C2 /* AvenirNext-Medium.otf */,
+				846FDA3C2558F66400FAF2C2 /* AvenirNext-Regular.otf */,
+			);
+			path = Font;
 			sourceTree = "<group>";
 		};
 		84BCA3E02555CC78000A56DB /* Cell */ = {
@@ -532,10 +569,18 @@
 			files = (
 				84432AA42551AE7700AFEFBA /* ForecastTableViewCell.xib in Resources */,
 				845EB23925506BC3008DA208 /* LaunchScreen.storyboard in Resources */,
+				846FDA412558F6F100FAF2C2 /* Avenir-Book.otf in Resources */,
 				842D6341255305F90090FB24 /* ForecastTableViewHeaderCell.xib in Resources */,
+				846FDA442558F6F100FAF2C2 /* AvenirNext-Medium.otf in Resources */,
+				846FDA422558F6F100FAF2C2 /* AvenirNext-Bold.otf in Resources */,
+				846FDA3E2558F6F100FAF2C2 /* Avenir-Medium.otf in Resources */,
+				846FDA402558F6F100FAF2C2 /* Avenir-Heavy.otf in Resources */,
 				8462A602255462AF005074FD /* LoadingView.xib in Resources */,
+				846FDA432558F6F100FAF2C2 /* AvenirNext-Heavy.otf in Resources */,
 				846D1F1F2557FCC200280F75 /* TableErrorView.xib in Resources */,
 				845EB23625506BC3008DA208 /* Assets.xcassets in Resources */,
+				846FDA452558F6F100FAF2C2 /* Avenir-Black.otf in Resources */,
+				846FDA3F2558F6F100FAF2C2 /* AvenirNext-Regular.otf in Resources */,
 				845EB23425506BC2008DA208 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -705,7 +750,6 @@
 				84D4C84825564CCE00755D0B /* BaseViewControllerTest.swift in Sources */,
 				841CD8002555570600AB8ABE /* WeatherPresenterTest.swift in Sources */,
 				841CD7F8255556F900AB8ABE /* WeatherInteractorTest.swift in Sources */,
-				845EB24425506BC3008DA208 /* weatherTests.swift in Sources */,
 				841CD8142555575000AB8ABE /* ForecastPresenterTest.swift in Sources */,
 				841CD80F2555574300AB8ABE /* ForecastInteractorTest.swift in Sources */,
 				84D4C82F25563F4300755D0B /* DataHelperTest.swift in Sources */,

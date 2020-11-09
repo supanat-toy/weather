@@ -10,7 +10,7 @@ import UIKit
 
 protocol WeatherDisplayLogic {
     func getCurrentWeatherOnComplete(viewModel: WeatherViewModel.Weather)
-    func getCurrentWeatherOnError(errorMessage: String)
+    func getCurrentWeatherOnError(errorMessage: String, viewModel: WeatherViewModel.Weather)
 }
 
 enum WeatherUnit: String {
@@ -92,7 +92,7 @@ class WeatherViewController: BaseViewController, WeatherDisplayLogic {
     }
     
     func getCurrentWeather() {
-        weatherUnitButton.setTitle(weatherDataStore?.weatherUnit.title, for: .normal)
+        weatherUnitButton.setAttributedTitle(weatherDataStore?.weatherUnit.title.underLined, for: .normal)
         if let cityName = cityTextField.text {
             if cityName.isEmpty {
                 self.alertError(message: "City name is empty")
@@ -115,36 +115,35 @@ class WeatherViewController: BaseViewController, WeatherDisplayLogic {
     
     func getCurrentWeatherOnComplete(viewModel: WeatherViewModel.Weather) {
         dismissLoadingView {
-            self.setDataValue(viewModel: viewModel)
+            self.setViewModel(viewModel: viewModel)
+            self.saveDataStore(viewModel: viewModel)
         }
     }
     
-    func setDataValue(viewModel: WeatherViewModel.Weather?) {
-        self.temperatureLabel.text = viewModel?.temp ?? "N/A"
-        self.timezoneLabel.text = viewModel?.time ?? "N/A"
-        self.humidityLabel.text = viewModel?.humidity ?? "N/A"
-        self.pressureLabel.text = viewModel?.pressure ?? "N/A"
-        self.cloudLabel.text = viewModel?.cloud ?? "N/A"
-        self.windSpeedLabel.text = viewModel?.windSpeed ?? "N/A"
-        self.weatherDescriptionLabel.text = viewModel?.weatherDescriotion ?? "N/A"
-        
-        if let weathericonURL = viewModel?.weathericonURL {
-            self.weatherImageView.downloaded(from: weathericonURL)
-        } else {
-            self.weatherImageView.image = UIImage()
+    func setViewModel(viewModel: WeatherViewModel.Weather) {
+        self.temperatureLabel.text = viewModel.temp
+        self.timezoneLabel.text = viewModel.time
+        self.humidityLabel.text = viewModel.humidity
+        self.pressureLabel.text = viewModel.pressure
+        self.cloudLabel.text = viewModel.cloud
+        self.windSpeedLabel.text = viewModel.windSpeed
+        self.weatherDescriptionLabel.text = viewModel.weatherDescriotion
+        self.weatherImageView.downloaded(from: viewModel.weathericonURL)
+    }
+    
+    func getCurrentWeatherOnError(errorMessage: String, viewModel: WeatherViewModel.Weather) {
+        dismissLoadingView {
+            self.setViewModel(viewModel: viewModel)
+            self.saveDataStore(viewModel: nil)
+            self.alertError(message: errorMessage)
         }
-        
+    }
+    
+    func saveDataStore(viewModel: WeatherViewModel.Weather?) {
         self.weatherDataStore?.cityName = viewModel?.cityName
         self.weatherDataStore?.temperature = viewModel?.temp
         self.weatherDataStore?.weatherImageURL = viewModel?.weathericonURL
         self.weatherDataStore?.weatherDescription = viewModel?.weatherDescriotion
-    }
-    
-    func getCurrentWeatherOnError(errorMessage: String) {
-        dismissLoadingView {
-            self.setDataValue(viewModel: nil)
-            self.alertError(message: errorMessage)
-        }
     }
 }
 

@@ -17,10 +17,10 @@ enum ForecastViewModel {
             var values: [Value]
             
             struct Value {
-                var time: String?
-                var tempMaxMin: String?
-                var weathericonURL: String?
-                var weatherDescription: String?
+                var time: String
+                var tempMaxMin: String
+                var weathericonURL: String
+                var weatherDescription: String
             }
         }
     }

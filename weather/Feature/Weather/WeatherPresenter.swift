@@ -22,7 +22,7 @@ class WeatherPresenter: WeatherPresentationLogic {
     
     func getWeatherOnComplete(response: WeatherModel.GetWeather.Response, cityName: String, weatherUnit: WeatherUnit) {
         let tempUnit = weatherUnit == .celsius ? "C" : "F"
-        let windSpeed = weatherUnit == .celsius ? "m/s NE" : "m/h NE"
+        let windSpeed = weatherUnit == .celsius ? "meter/sec" : "miles/hour"
         
         var time: String?
         if let timezone = response.dt {
@@ -46,6 +46,18 @@ class WeatherPresenter: WeatherPresentationLogic {
     
     func getWeatherOnError(error: NetworkError) {
         let errorMessage = "Error code: \(error.code ?? "")\nMessage: \(error.message ?? "")"
-        viewController?.getCurrentWeatherOnError(errorMessage: errorMessage)
+        
+        let weatherViewModel = WeatherViewModel.Weather(
+            cityName: "N/A",
+            time: "N/A",
+            pressure: "N/A",
+            weatherDescriotion: "N/A",
+            windSpeed: "N/A",
+            humidity: "N/A",
+            temp: "N/A",
+            cloud: "N/A",
+            weathericonURL: ""
+        )
+        viewController?.getCurrentWeatherOnError(errorMessage: errorMessage, viewModel: weatherViewModel)
     }
 }
