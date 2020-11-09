@@ -103,18 +103,18 @@ class ForecastPresenterTest: XCTestCase {
         XCTAssertEqual("Monday, November 9", viewController.viewModel?.forecastByDates?[0].date)
         XCTAssertEqual("01:00", viewController.viewModel?.forecastByDates?[0].values[0].time)
         XCTAssertEqual("39/37°C", viewController.viewModel?.forecastByDates?[0].values[0].tempMaxMin)
-        XCTAssertEqual("heavy rain", viewController.viewModel?.forecastByDates?[0].values[0].weatherDescription)
+        XCTAssertEqual("Heavy Rain", viewController.viewModel?.forecastByDates?[0].values[0].weatherDescription)
         XCTAssertEqual("http://openweathermap.org/img/wn/11d@2x.png", viewController.viewModel?.forecastByDates?[0].values[0].weathericonURL)
         
         XCTAssertEqual("04:00", viewController.viewModel?.forecastByDates?[0].values[1].time)
         XCTAssertEqual("39/37°C", viewController.viewModel?.forecastByDates?[0].values[1].tempMaxMin)
-        XCTAssertEqual("Clear cloud", viewController.viewModel?.forecastByDates?[0].values[1].weatherDescription)
+        XCTAssertEqual("Clear Cloud", viewController.viewModel?.forecastByDates?[0].values[1].weatherDescription)
         XCTAssertEqual("http://openweathermap.org/img/wn/02n@2x.png", viewController.viewModel?.forecastByDates?[0].values[1].weathericonURL)
        
         XCTAssertEqual("Tuesday, November 10", viewController.viewModel?.forecastByDates?[1].date)
         XCTAssertEqual("04:00", viewController.viewModel?.forecastByDates?[1].values[0].time)
         XCTAssertEqual("43/33°C", viewController.viewModel?.forecastByDates?[1].values[0].tempMaxMin)
-        XCTAssertEqual("Clear cloud 2", viewController.viewModel?.forecastByDates?[1].values[0].weatherDescription)
+        XCTAssertEqual("Clear Cloud 2", viewController.viewModel?.forecastByDates?[1].values[0].weatherDescription)
         XCTAssertEqual("http://openweathermap.org/img/wn/02n@2x.png", viewController.viewModel?.forecastByDates?[1].values[0].weathericonURL)
     }
     
@@ -201,18 +201,18 @@ class ForecastPresenterTest: XCTestCase {
         XCTAssertEqual("Monday, November 9", viewController.viewModel?.forecastByDates?[0].date)
         XCTAssertEqual("01:00", viewController.viewModel?.forecastByDates?[0].values[0].time)
         XCTAssertEqual("39/37°F", viewController.viewModel?.forecastByDates?[0].values[0].tempMaxMin)
-        XCTAssertEqual("heavy rain", viewController.viewModel?.forecastByDates?[0].values[0].weatherDescription)
+        XCTAssertEqual("Heavy Rain", viewController.viewModel?.forecastByDates?[0].values[0].weatherDescription)
         XCTAssertEqual("http://openweathermap.org/img/wn/11d@2x.png", viewController.viewModel?.forecastByDates?[0].values[0].weathericonURL)
         
         XCTAssertEqual("04:00", viewController.viewModel?.forecastByDates?[0].values[1].time)
         XCTAssertEqual("39/37°F", viewController.viewModel?.forecastByDates?[0].values[1].tempMaxMin)
-        XCTAssertEqual("Clear cloud", viewController.viewModel?.forecastByDates?[0].values[1].weatherDescription)
+        XCTAssertEqual("Clear Cloud", viewController.viewModel?.forecastByDates?[0].values[1].weatherDescription)
         XCTAssertEqual("http://openweathermap.org/img/wn/02n@2x.png", viewController.viewModel?.forecastByDates?[0].values[1].weathericonURL)
        
         XCTAssertEqual("Tuesday, November 10", viewController.viewModel?.forecastByDates?[1].date)
         XCTAssertEqual("04:00", viewController.viewModel?.forecastByDates?[1].values[0].time)
         XCTAssertEqual("43/33°F", viewController.viewModel?.forecastByDates?[1].values[0].tempMaxMin)
-        XCTAssertEqual("Clear cloud 2", viewController.viewModel?.forecastByDates?[1].values[0].weatherDescription)
+        XCTAssertEqual("Clear Cloud 2", viewController.viewModel?.forecastByDates?[1].values[0].weatherDescription)
         XCTAssertEqual("http://openweathermap.org/img/wn/02n@2x.png", viewController.viewModel?.forecastByDates?[1].values[0].weathericonURL)
     }
     

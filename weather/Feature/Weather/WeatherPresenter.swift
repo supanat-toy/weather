@@ -34,7 +34,7 @@ class WeatherPresenter: WeatherPresentationLogic {
             cityName: cityName,
             time: time ?? "N/A",
             pressure: DataHelper.shared.formattNumberDecimal(number: response.main?.pressure, point: 0) + " hPa",
-            weatherDescriotion: response.weather?.first?.description ?? "",
+            weatherDescriotion: response.weather?.first?.description?.capitalized ?? "",
             windSpeed: DataHelper.shared.formattNumberDecimal(number: response.wind?.speed, point: 2) + " " + windSpeed,
             humidity: DataHelper.shared.formattNumberDecimal(number: response.main?.humidity, point: 0) + "%",
             temp: (DataHelper.shared.formattNumberDecimal(number: response.main?.temp, point: 0)) + "°" + tempUnit ,

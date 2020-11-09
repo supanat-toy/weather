@@ -58,7 +58,7 @@ class WeatherPresenterTest: XCTestCase {
         XCTAssertEqual("40%", viewController.viewModel?.humidity)
         XCTAssertEqual("12 hPa", viewController.viewModel?.pressure)
         XCTAssertEqual("38°C", viewController.viewModel?.temp)
-        XCTAssertEqual("clear cloud", viewController.viewModel?.weatherDescriotion)
+        XCTAssertEqual("Clear Cloud", viewController.viewModel?.weatherDescriotion)
         XCTAssertEqual("http://openweathermap.org/img/wn/10d@4x.png", viewController.viewModel?.weathericonURL)
         XCTAssertEqual("24.43 meter/sec", viewController.viewModel?.windSpeed)
     }
@@ -101,7 +101,7 @@ class WeatherPresenterTest: XCTestCase {
         XCTAssertEqual("40%", viewController.viewModel?.humidity)
         XCTAssertEqual("12 hPa", viewController.viewModel?.pressure)
         XCTAssertEqual("38°F", viewController.viewModel?.temp)
-        XCTAssertEqual("clear cloud", viewController.viewModel?.weatherDescriotion)
+        XCTAssertEqual("Clear Cloud", viewController.viewModel?.weatherDescriotion)
         XCTAssertEqual("http://openweathermap.org/img/wn/10d@4x.png", viewController.viewModel?.weathericonURL)
         XCTAssertEqual("24.43 miles/hour", viewController.viewModel?.windSpeed)
     }

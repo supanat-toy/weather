@@ -37,7 +37,7 @@ class ForecastPresenter: ForecastPresentationLogic {
                 time: time,
                 tempMaxMin: "\(DataHelper.shared.formattNumberDecimal(number: forecast.main?.temp_max, point: 0))/\(DataHelper.shared.formattNumberDecimal(number: forecast.main?.temp_min, point: 0))°\(unit)",
                 weathericonURL: "http://openweathermap.org/img/wn/\(forecast.weather?.first?.icon ?? "")@2x.png",
-                weatherDescription: forecast.weather?.first?.description ?? ""
+                weatherDescription: forecast.weather?.first?.description?.capitalized ?? ""
             )
             
             if let index = forecastByDates.firstIndex(where: { (va) -> Bool in
